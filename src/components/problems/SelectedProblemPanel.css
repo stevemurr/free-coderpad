@@ -1,0 +1,51 @@
+.selected-problem-panel {
+    background-color: var(--light-input-bg);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 10px var(--light-shadow);
+    border: 1px solid var(--light-border);
+    transition: all 0.3s ease;
+}
+
+.dark-mode .selected-problem-panel {
+    background-color: var(--dark-input-bg);
+    box-shadow: 0 4px 10px var(--dark-shadow);
+    border: 1px solid var(--dark-border);
+}
+
+.selected-problem-panel .problem-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.selected-problem-panel .problem-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.selected-problem-panel .problem-description-content pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: "Fira Code", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background-color: var(--light-sidebar-bg);
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin: 0;
+}
+
+.dark-mode .selected-problem-panel .problem-description-content pre {
+    background-color: var(--dark-sidebar-bg);
+}
+
+.selected-problem-panel .problem-tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}

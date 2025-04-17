@@ -1,0 +1,55 @@
+.problem-selector-container {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+
+.problem-sidebar {
+    width: 350px;
+    background-color: var(--light-sidebar-bg);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--light-border);
+    height: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.dark-mode .problem-sidebar {
+    background-color: var(--dark-sidebar-bg);
+    border-right: 1px solid var(--dark-border);
+}
+
+.problem-sidebar-top {
+    flex-shrink: 0;
+    margin-bottom: 12px;
+}
+
+.problem-details {
+    flex: 1;
+    overflow-y: auto; /* This will handle scrolling for the entire description side */
+    background-color: var(--light-input-bg);
+    height: 100%;
+}
+
+.dark-mode .problem-details {
+    background-color: var(--dark-input-bg);
+}
+
+@media (max-width: 768px) {
+    .problem-selector-container {
+        flex-direction: column;
+    }
+
+    .problem-sidebar {
+        width: 100%;
+        max-height: 40%;
+        border-right: none;
+        border-bottom: 1px solid var(--light-border);
+    }
+
+    .dark-mode .problem-sidebar {
+        border-bottom: 1px solid var(--dark-border);
+    }
+}

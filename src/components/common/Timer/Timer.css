@@ -1,0 +1,46 @@
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.timer-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.timer-display {
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    display: inline-block;
+}
+
+.dark-mode .timer-display {
+    background-color: #374151;
+    color: #e5e7eb;
+}
+
+.timer-ending {
+    color: #ef4444;
+    animation: pulse 1s infinite;
+}
+
+.dark-mode .timer-ending {
+    color: #f87171;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}

@@ -1,0 +1,108 @@
+.problem-list-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    /* Add a fixed height to ensure scrolling happens within the container */
+    height: 0; /* This forces the container to only take available space and scroll */
+    min-height: 200px; /* Provide a minimum height */
+    /* Add some bottom padding to ensure the last item is fully visible when scrolled */
+    padding-bottom: 16px;
+}
+
+.problem-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.problem-item {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--light-sidebar-item);
+    font-size: 0.9rem;
+    width: calc(100% - 1.5rem);
+    word-break: break-word;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Make sure the last item has no margin to avoid extra scrolling space */
+.problem-item:last-child {
+    margin-bottom: 0;
+}
+
+.problem-item:hover {
+    background-color: var(--light-sidebar-item-hover);
+}
+
+.problem-item.active {
+    background-color: var(--light-sidebar-item-active);
+    font-weight: 600;
+}
+
+.dark-mode .problem-item {
+    background-color: var(--dark-sidebar-item);
+}
+
+.dark-mode .problem-item:hover {
+    background-color: var(--dark-sidebar-item-hover);
+}
+
+.dark-mode .problem-item.active {
+    background-color: var(--dark-sidebar-item-active);
+}
+
+.problem-difficulty {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.7rem;
+    border-radius: 4px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+}
+
+.difficulty-easy {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #059669;
+}
+
+.difficulty-medium {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #d97706;
+}
+
+.difficulty-hard {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #dc2626;
+}
+
+.dark-mode .difficulty-easy {
+    background-color: rgba(16, 185, 129, 0.3);
+    color: #34d399;
+}
+
+.dark-mode .difficulty-medium {
+    background-color: rgba(245, 158, 11, 0.3);
+    color: #fbbf24;
+}
+
+.dark-mode .difficulty-hard {
+    background-color: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+.no-problems-found {
+    padding: 1rem;
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+}
+
+.dark-mode .no-problems-found {
+    color: #9ca3af;
+}

@@ -1,0 +1,50 @@
+.python-editor-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+    .python-editor-container {
+        max-width: 1400px; /* Increased to accommodate the wider layout */
+    }
+
+    /* Create a flex container for the editor and output sections */
+    .editor-output-container {
+        display: flex;
+        gap: 1.5rem;
+        align-items: stretch;
+    }
+
+    /* Set the editor section to take up more space */
+    .editor-section {
+        flex: 3;
+        margin-bottom: 0; /* Remove bottom margin since they're side by side */
+    }
+
+    /* Style the output section */
+    .output-section {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        min-width: 300px;
+    }
+}
+
+/* On smaller screens, keep the stacked layout */
+@media (max-width: 1023px) {
+    .editor-output-container {
+        display: block;
+    }
+
+    .editor-section {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .python-editor-container {
+        padding: 1rem;
+    }
+}

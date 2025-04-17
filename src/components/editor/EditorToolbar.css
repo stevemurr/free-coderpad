@@ -1,0 +1,37 @@
+.editor-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 0.75rem 1rem;
+    background-color: var(--light-sidebar-bg);
+    border-radius: 8px 8px 0 0;
+    border: 1px solid var(--light-border);
+    border-bottom: none;
+}
+
+.dark-mode .editor-top-bar {
+    background-color: var(--dark-sidebar-bg);
+    border: 1px solid var(--dark-border);
+    border-bottom: none;
+}
+
+.editor-title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.run-button {
+    min-width: 100px;
+}
+
+@media (max-width: 768px) {
+    .editor-top-bar {
+        padding: 0.5rem;
+    }
+
+    .run-button {
+        min-width: auto;
+    }
+}

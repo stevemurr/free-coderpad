@@ -1,0 +1,81 @@
+.output-section {
+    width: 100%;
+}
+
+.output-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.output-container {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px var(--light-shadow);
+    border-radius: 8px;
+    overflow: auto;
+    font-family: "Fira Code", "JetBrains Mono", "SF Mono", monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 150px;
+    max-height: 350px;
+    white-space: pre;
+    padding: 16px;
+    tab-size: 4;
+    letter-spacing: -0.025em;
+    background-color: var(--light-input-bg);
+    color: var(--light-text);
+    border: 1px solid var(--light-border);
+}
+
+.dark-mode .output-container {
+    box-shadow: 0 4px 20px var(--dark-shadow);
+    background-color: var(--dark-input-bg);
+    color: var(--dark-text);
+    border: 1px solid var(--dark-border);
+}
+
+.output-container .stdout {
+    color: inherit;
+}
+
+.output-container .stderr {
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.dark-mode .output-container .stderr {
+    color: #f87171;
+}
+
+.output-container .result {
+    color: #059669;
+    font-weight: 500;
+}
+
+.dark-mode .output-container .result {
+    color: #34d399;
+}
+
+.output-loading {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .output-container {
+        height: calc(100% - 2.5rem);
+        max-height: none;
+    }
+}

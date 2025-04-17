@@ -1,0 +1,102 @@
+.problem-description-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.problem-description-empty {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-style: italic;
+    padding: 32px;
+}
+
+.dark-mode .problem-description-empty {
+    color: #9ca3af;
+}
+
+.problem-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.problem-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.problem-body {
+    /* Allow natural content flow without forcing scrollbars */
+    overflow-y: auto; /* This will only add scrollbars when needed */
+    /* Remove fixed heights and use content-based sizing */
+    flex: 1; /* Take available space */
+    margin-bottom: 16px;
+}
+
+.problem-body pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: "Fira Code", monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    background-color: var(--light-sidebar-bg);
+    padding: 16px;
+    border-radius: 6px;
+    margin: 0;
+}
+
+.dark-mode .problem-body pre {
+    background-color: var(--dark-sidebar-bg);
+}
+
+.problem-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+    /* Keep this at the bottom of the content flow, not pushed away */
+    flex-shrink: 0;
+}
+
+.problem-tag {
+    display: inline-block;
+    background-color: var(--light-sidebar-item);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.dark-mode .problem-tag {
+    background-color: var(--dark-sidebar-item);
+}
+
+.problem-actions {
+    /* Set to flex-shrink: 0 to keep it at the bottom */
+    flex-shrink: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto; /* Push to bottom of container */
+}
+
+.problem-select-btn {
+    background-color: var(--light-accent);
+    color: white;
+}
+
+.problem-select-btn:hover {
+    background-color: var(--light-button-hover);
+}
+
+.dark-mode .problem-select-btn {
+    background-color: var(--dark-accent);
+}
+
+.dark-mode .problem-select-btn:hover {
+    background-color: var(--dark-button-hover);
+}
