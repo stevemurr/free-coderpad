@@ -979,4 +979,458 @@ print(valid_word_abbreviation("substitution", "s55n"))              # Should ret
 print(valid_word_abbreviation("substitution", "s010n"))             # Should return False
 print(valid_word_abbreviation("substitution", "s0ubstitution"))     # Should return False`,
   },
+  {
+    id: 22,
+    title: "Buildings With an Ocean View",
+    difficulty: "Medium",
+    tags: ["Array", "Stack", "Monotonic Stack"],
+    description: `There are n buildings in a line. You are given an integer array heights of size n that represents the heights of the buildings in the line.
+
+The ocean is to the right of the buildings. A building has an ocean view if the building can see the ocean without being blocked by another building. Formally, a building has an ocean view if all the buildings to its right have a smaller height.
+
+Return a list of indices (0-indexed) of buildings that have an ocean view, sorted in increasing order.
+
+Example 1:
+Input: heights = [4,2,3,1]
+Output: [0,2,3]
+Explanation: Building 1 (0-indexed) does not have an ocean view because building 2 is taller.
+
+Example 2:
+Input: heights = [4,3,2,1]
+Output: [0,1,2,3]
+Explanation: All buildings have an ocean view.
+
+Example 3:
+Input: heights = [1,3,2,4]
+Output: [3]
+Explanation: Only building 3 has an ocean view.`,
+    code: `def find_buildings(heights):
+    """
+    :type heights: List[int]
+    :rtype: List[int]
+    """
+    # Your code here
+
+
+# Test cases
+print(find_buildings([4, 2, 3, 1]))  # Should return [0, 2, 3]
+print(find_buildings([4, 3, 2, 1]))  # Should return [0, 1, 2, 3]
+print(find_buildings([1, 3, 2, 4]))  # Should return [3]
+print(find_buildings([2, 2, 2, 2]))  # Should return [3]`,
+  },
+  {
+    id: 23,
+    title: "Binary Tree Vertical Order Traversal",
+    difficulty: "Medium",
+    tags: [
+      "Hash Table",
+      "Tree",
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Binary Tree",
+    ],
+    description: `Given the root of a binary tree, return the vertical order traversal of its nodes' values. (i.e., from top to bottom, column by column).
+
+If two nodes are in the same row and column, the order should be from left to right.
+
+Example 1:
+Input: root = [3,9,20,null,null,15,7]
+Output: [[9],[3,15],[20],[7]]
+Explanation:
+Column -1: Only node 9 is in this column.
+Column 0: Nodes 3 and 15 are in this column in that order from top to bottom.
+Column 1: Only node 20 is in this column.
+Column 2: Only node 7 is in this column.
+
+Example 2:
+Input: root = [3,9,8,4,0,1,7]
+Output: [[4],[9],[3,0,1],[8],[7]]
+Explanation:
+Column -2: Only node 4 is in this column.
+Column -1: Only node 9 is in this column.
+Column 0: Nodes 3, 0, and 1 are in this column.
+Column 1: Only node 8 is in this column.
+Column 2: Only node 7 is in this column.
+
+Example 3:
+Input: root = [3,9,8,4,0,1,7,null,null,null,2,5]
+Output: [[4],[9,5],[3,0,1],[8,2],[7]]
+Explanation:
+Column -2: Only node 4 is in this column.
+Column -1: Nodes 9 and 5 are in this column in that order from top to bottom.
+Column 0: Nodes 3, 0, and 1 are in this column.
+Column 1: Nodes 8 and 2 are in this column in that order from top to bottom.
+Column 2: Only node 7 is in this column.`,
+    code: `# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def vertical_order(root):
+    """
+    :type root: TreeNode
+    :rtype: List[List[int]]
+    """
+    # Your code here
+
+
+# Helper function to create a tree from a list
+def create_tree(values):
+    if not values:
+        return None
+
+    root = TreeNode(values[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(values):
+        node = queue.pop(0)
+
+        # Left child
+        if i < len(values) and values[i] is not None:
+            node.left = TreeNode(values[i])
+            queue.append(node.left)
+        i += 1
+
+        # Right child
+        if i < len(values) and values[i] is not None:
+            node.right = TreeNode(values[i])
+            queue.append(node.right)
+        i += 1
+
+    return root
+
+# Test cases
+print(vertical_order(create_tree([3, 9, 20, None, None, 15, 7])))  # Should return [[9],[3,15],[20],[7]]
+print(vertical_order(create_tree([3, 9, 8, 4, 0, 1, 7])))          # Should return [[4],[9],[3,0,1],[8],[7]]
+print(vertical_order(create_tree([3, 9, 8, 4, 0, 1, 7, None, None, None, 2, 5])))  # Should return [[4],[9,5],[3,0,1],[8,2],[7]]
+print(vertical_order(create_tree([])))                             # Should return []`,
+  },
+  {
+    id: 24,
+    title: "Binary Tree Right Side View",
+    difficulty: "Medium",
+    tags: ["Tree", "Depth-First Search", "Breadth-First Search", "Binary Tree"],
+    description: `Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+Example 1:
+Input: root = [1,2,3,null,5,null,4]
+Output: [1,3,4]
+
+Example 2:
+Input: root = [1,null,3]
+Output: [1,3]
+
+Example 3:
+Input: root = []
+Output: []`,
+    code: `# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def right_side_view(root):
+    """
+    :type root: TreeNode
+    :rtype: List[int]
+    """
+    # Your code here
+
+
+# Helper function to create a tree from a list
+def create_tree(values):
+    if not values:
+        return None
+
+    root = TreeNode(values[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(values):
+        node = queue.pop(0)
+
+        # Left child
+        if i < len(values) and values[i] is not None:
+            node.left = TreeNode(values[i])
+            queue.append(node.left)
+        i += 1
+
+        # Right child
+        if i < len(values) and values[i] is not None:
+            node.right = TreeNode(values[i])
+            queue.append(node.right)
+        i += 1
+
+    return root
+
+# Test cases
+print(right_side_view(create_tree([1, 2, 3, None, 5, None, 4])))  # Should return [1, 3, 4]
+print(right_side_view(create_tree([1, None, 3])))                 # Should return [1, 3]
+print(right_side_view(create_tree([])))                           # Should return []
+print(right_side_view(create_tree([1, 2])))                       # Should return [1, 2]`,
+  },
+  {
+    id: 25,
+    title: "Lowest Common Ancestor of a Binary Tree III",
+    difficulty: "Medium",
+    tags: ["Tree", "Hash Table", "Binary Tree"],
+    description: `Given two nodes of a binary tree p and q, return their lowest common ancestor (LCA).
+
+Each node has a reference to its parent node. The definition for Node is below:
+
+class Node {
+    public int val;
+    public Node left;
+    public Node right;
+    public Node parent;
+}
+
+According to the definition of LCA on Wikipedia: "The lowest common ancestor of two nodes p and q in a tree T is the lowest node that has both p and q as descendants (where we allow a node to be a descendant of itself)."
+
+Example 1:
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+Output: 3
+Explanation: The LCA of nodes 5 and 1 is 3.
+
+Example 2:
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+Output: 5
+Explanation: The LCA of nodes 5 and 4 is 5 since a node can be a descendant of itself according to the LCA definition.
+
+Example 3:
+Input: root = [1,2], p = 1, q = 2
+Output: 1
+Explanation: The LCA of nodes 1 and 2 is 1.`,
+    code: `# Definition for a Node.
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+        self.parent = None
+
+def lowestCommonAncestor(p, q):
+    """
+    :type p: Node
+    :type q: Node
+    :rtype: Node
+    """
+    # Your code here
+
+
+# Helper function to create a tree from a list with parent pointers
+def create_tree_with_parent(values):
+    if not values:
+        return None
+
+    # Create all nodes first
+    nodes = [Node(val) if val is not None else None for val in values]
+
+    # Connect the nodes
+    for i in range(len(nodes)):
+        if nodes[i] is None:
+            continue
+
+        # Left child
+        left_idx = 2 * i + 1
+        if left_idx < len(nodes) and nodes[left_idx] is not None:
+            nodes[i].left = nodes[left_idx]
+            nodes[left_idx].parent = nodes[i]
+
+        # Right child
+        right_idx = 2 * i + 2
+        if right_idx < len(nodes) and nodes[right_idx] is not None:
+            nodes[i].right = nodes[right_idx]
+            nodes[right_idx].parent = nodes[i]
+
+    return nodes[0] if nodes else None
+
+# Helper function to find a node with a specific value
+def find_node(root, val):
+    if not root:
+        return None
+    if root.val == val:
+        return root
+
+    left = find_node(root.left, val)
+    if left:
+        return left
+
+    return find_node(root.right, val)
+
+# Test cases
+tree1 = create_tree_with_parent([3,5,1,6,2,0,8,None,None,7,4])
+p1 = find_node(tree1, 5)
+q1 = find_node(tree1, 1)
+result1 = lowestCommonAncestor(p1, q1)
+print(result1.val if result1 else None)  # Should return 3
+
+p2 = find_node(tree1, 5)
+q2 = find_node(tree1, 4)
+result2 = lowestCommonAncestor(p2, q2)
+print(result2.val if result2 else None)  # Should return 5
+
+tree2 = create_tree_with_parent([1,2])
+p3 = find_node(tree2, 1)
+q3 = find_node(tree2, 2)
+result3 = lowestCommonAncestor(p3, q3)
+print(result3.val if result3 else None)  # Should return 1`,
+  },
+  {
+    id: 26,
+    title: "Merge Sorted Array",
+    difficulty: "Easy",
+    tags: ["Array", "Two Pointers", "Sorting"],
+    description: `You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+
+The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+
+Example 1:
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
+Example 2:
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+Explanation: The arrays we are merging are [1] and [].
+The result of the merge is [1].
+
+Example 3:
+Input: nums1 = [0], m = 0, nums2 = [1], n = 1
+Output: [1]
+Explanation: The arrays we are merging are [] and [1].
+The result of the merge is [1].
+Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.`,
+    code: `def merge(nums1, m, nums2, n):
+    """
+    :type nums1: List[int]
+    :type m: int
+    :type nums2: List[int]
+    :type n: int
+    :rtype: None Do not return anything, modify nums1 in-place instead.
+    """
+    # Your code here
+
+
+# Test cases
+nums1 = [1, 2, 3, 0, 0, 0]
+merge(nums1, 3, [2, 5, 6], 3)
+print(nums1)  # Should print [1, 2, 2, 3, 5, 6]
+
+nums2 = [1]
+merge(nums2, 1, [], 0)
+print(nums2)  # Should print [1]
+
+nums3 = [0]
+merge(nums3, 0, [1], 1)
+print(nums3)  # Should print [1]`,
+  },
+  {
+    id: 27,
+    title: "Basic Calculator II",
+    difficulty: "Medium",
+    tags: ["String", "Stack", "Math"],
+    description: `Given a string s which represents an expression, evaluate this expression and return its value.
+
+The integer division should truncate toward zero.
+
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+
+Example 1:
+Input: s = "3+2*2"
+Output: 7
+
+Example 2:
+Input: s = " 3/2 "
+Output: 1
+
+Example 3:
+Input: s = " 3+5 / 2 "
+Output: 5`,
+    code: `def calculate(s):
+    """
+    :type s: str
+    :rtype: int
+    """
+    # Your code here
+
+
+# Test cases
+print(calculate("3+2*2"))       # Should return 7
+print(calculate(" 3/2 "))       # Should return 1
+print(calculate(" 3+5 / 2 "))   # Should return 5
+print(calculate("14-3/2"))      # Should return 13`,
+  },
+  {
+    id: 28,
+    title: "Diameter of Binary Tree",
+    difficulty: "Easy",
+    tags: ["Tree", "Depth-First Search", "Binary Tree"],
+    description: `Given the root of a binary tree, return the length of the diameter of the tree.
+
+The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+
+The length of a path between two nodes is represented by the number of edges between them.
+
+Example 1:
+Input: root = [1,2,3,4,5]
+Output: 3
+Explanation: 3 is the length of the path [4,2,1,3] or [5,2,1,3].
+
+Example 2:
+Input: root = [1,2]
+Output: 1`,
+    code: `# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def diameter_of_binary_tree(root):
+    """
+    :type root: TreeNode
+    :rtype: int
+    """
+    # Your code here
+
+
+# Helper function to create a tree from a list
+def create_tree(values):
+    if not values:
+        return None
+
+    root = TreeNode(values[0])
+    queue = [root]
+    i = 1
+    while queue and i < len(values):
+        node = queue.pop(0)
+
+        # Left child
+        if i < len(values) and values[i] is not None:
+            node.left = TreeNode(values[i])
+            queue.append(node.left)
+        i += 1
+
+        # Right child
+        if i < len(values) and values[i] is not None:
+            node.right = TreeNode(values[i])
+            queue.append(node.right)
+        i += 1
+
+    return root
+
+# Test cases
+print(diameter_of_binary_tree(create_tree([1,2,3,4,5])))  # Should return 3
+print(diameter_of_binary_tree(create_tree([1,2])))        # Should return 1
+print(diameter_of_binary_tree(create_tree([1])))          # Should return 0`,
+  },
 ];
