@@ -9,12 +9,21 @@ export const getProblemById = (id) => {
 };
 
 export const filterProblems = (searchTerm, difficulty) => {
-  return sampleProblems.filter((problem) => {
-    const matchesTerm = problem.title
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const matchesDifficulty =
-      difficulty === "all" || problem.difficulty.toLowerCase() === difficulty;
-    return matchesTerm && matchesDifficulty;
+  const problems = sampleProblems;
+
+  return problems.filter((problem) => {
+    const searchMatch =
+      searchTerm === "" ||
+      problem.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      problem.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (problem.company &&
+        problem.company.some((c) =>
+          c.toLowerCase().includes(searchTerm.toLowerCase()),
+        ));
+
+    const difficultyMatch =
+      difficulty === "all" || problem.difficulty === difficulty;
+
+    return searchMatch && difficultyMatch;
   });
 };

@@ -3,6 +3,7 @@ export const sampleProblems = [
     id: 1,
     title: "Valid Palindrome II",
     difficulty: "Medium",
+    company: [""],
     tags: ["String", "Two Pointers", "Greedy"],
     description: `Given a string s, return true if the s can be palindrome after deleting at most one character from it.
 
@@ -37,6 +38,7 @@ print(valid_palindrome_ii("abccdba")) # Should return False`,
     id: 2,
     title: "Decode String",
     difficulty: "Medium",
+    company: [""],
     tags: ["String", "Stack", "Recursion"],
     description: `Given an encoded string, return its decoded string.
 
@@ -73,6 +75,7 @@ print(decode_string("abc3[cd]xyz"))    # Should return "abccdcdcdxyz"`,
     id: 3,
     title: "LRU Cache",
     difficulty: "Medium",
+    company: ["Meta"],
     tags: ["Hash Table", "Linked List", "Design"],
     description: `Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.
 
@@ -141,6 +144,7 @@ print(cache.get(4))       # Should return 4`,
     title: "Minimum Remove to Make Valid Parentheses",
     priority: "High",
     difficulty: "Medium",
+    company: [""],
     tags: ["String", "Stack"],
     description: `Given a string s of '(' , ')' and lowercase English characters.
 
@@ -182,6 +186,7 @@ print(min_remove_to_make_valid("(a(b(c)d)"))     # Should return "a(b(c)d)" or e
     id: 5,
     title: "Merge Intervals",
     difficulty: "Medium",
+    company: [""],
     tags: ["Array", "Sorting"],
     description: `Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
 
@@ -209,66 +214,10 @@ print(merge([[1,4],[0,4]]))                # Should return [[0,4]]
 print(merge([[1,4],[2,3]]))                # Should return [[1,4]]`,
   },
   {
-    id: 6,
-    title: "Number of Islands",
-    difficulty: "Medium",
-    tags: [
-      "Array",
-      "Depth-First Search",
-      "Breadth-First Search",
-      "Union Find",
-      "Matrix",
-    ],
-    description: `Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
-
-An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
-
-Example 1:
-Input: grid = [
-  ["1","1","1","1","0"],
-  ["1","1","0","1","0"],
-  ["1","1","0","0","0"],
-  ["0","0","0","0","0"]
-]
-Output: 1
-
-Example 2:
-Input: grid = [
-  ["1","1","0","0","0"],
-  ["1","1","0","0","0"],
-  ["0","0","1","0","0"],
-  ["0","0","0","1","1"]
-]
-Output: 3`,
-    code: `def num_islands(grid):
-    """
-    :type grid: List[List[str]]
-    :rtype: int
-    """
-    # Your code here
-
-
-# Test cases
-grid1 = [
-  ["1","1","1","1","0"],
-  ["1","1","0","1","0"],
-  ["1","1","0","0","0"],
-  ["0","0","0","0","0"]
-]
-print(num_islands(grid1))  # Should return 1
-
-grid2 = [
-  ["1","1","0","0","0"],
-  ["1","1","0","0","0"],
-  ["0","0","1","0","0"],
-  ["0","0","0","1","1"]
-]
-print(num_islands(grid2))  # Should return 3`,
-  },
-  {
     id: 7,
     title: "Subarray Sum Equals K",
     difficulty: "Medium",
+    company: ["Meta"],
     tags: ["Array", "Hash Table", "Prefix Sum"],
     description: `Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
 
@@ -300,6 +249,7 @@ print(subarray_sum([1, 2, 1, 2, 1], 3)) # Should return 4`,
     id: 8,
     title: "Clone Graph",
     difficulty: "Medium",
+    company: [""],
     tags: ["Hash Table", "Depth-First Search", "Breadth-First Search", "Graph"],
     description: `Given a reference of a node in a connected undirected graph.
 
@@ -394,6 +344,7 @@ print(graph_to_adjacency_list(cloned3))  # Should print []`,
     title: "Kth Largest Element in an Array",
     priority: "High",
     difficulty: "Medium",
+    company: ["Meta"],
     tags: [
       "Array",
       "Divide and Conquer",
@@ -433,6 +384,7 @@ print(find_kth_largest([7, 6, 5, 4, 3, 2, 1], 5))       # Should return 3`,
     id: 10,
     title: "Serialize and Deserialize Binary Tree",
     difficulty: "Hard",
+    company: [""],
     tags: [
       "String",
       "Tree",
@@ -544,6 +496,7 @@ print(tree_to_list(deserialized2))  # Should return []`,
     id: 11,
     title: "Word Break",
     difficulty: "Medium",
+    company: [""],
     tags: [
       "Hash Table",
       "String",
@@ -588,6 +541,7 @@ print(word_break("abcd", ["a", "abc", "b", "cd"]))                     # Should 
     id: 12,
     title: "Binary Tree Maximum Path Sum",
     difficulty: "Hard",
+    company: [""],
     tags: ["Dynamic Programming", "Tree", "Depth-First Search", "Binary Tree"],
     description: `A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.
 
@@ -654,6 +608,7 @@ print(max_path_sum(create_tree([-3])))                            # Should retur
     id: 13,
     title: "Verifying an Alien Dictionary",
     difficulty: "Medium",
+    company: [""],
     tags: ["Array", "Hash Table", "String"],
     description: `In an alien language, surprisingly, they also use English lowercase letters, but possibly in a different order. The order of the alphabet is some permutation of lowercase letters.
 
@@ -720,6 +675,7 @@ print(min_meeting_rooms([[1, 5], [5, 10]]))  # Should return 1`,
     id: 15,
     title: "Basic Calculator II",
     difficulty: "Medium",
+    company: ["Meta"],
     tags: ["String", "Stack", "Math"],
     description: `Given a string s which represents an expression, evaluate this expression and return its value.
 
@@ -759,6 +715,7 @@ print(calculate("1+2*5/3+6/4")) # Should return 4`,
     id: 16,
     title: "Two Sum",
     difficulty: "Easy",
+    company: [""],
     description: `Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 You can return the answer in any order.
@@ -784,6 +741,7 @@ print(two_sum([3, 3], 6))          # Should return [0, 1]`,
     id: 17,
     title: "Palindrome Number",
     difficulty: "Easy",
+    company: [""],
     description: `Given an integer x, return true if x is a palindrome, and false otherwise.
 An integer is a palindrome when it reads the same forward and backward.
 
@@ -809,6 +767,7 @@ print(is_palindrome(10))     # Should return False`,
     id: 18,
     title: "Valid Parentheses",
     difficulty: "Easy",
+    company: [""],
     description: `Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
 An input string is valid if:
 1. Open brackets must be closed by the same type of brackets.
@@ -841,6 +800,7 @@ print(is_valid("{[]}"))      # Should return True`,
     id: 19,
     title: "Merge Two Sorted Lists",
     difficulty: "Easy",
+    company: [""],
     description: `You are given the heads of two sorted linked lists list1 and list2.
 Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
 Return the head of the merged linked list.
@@ -898,6 +858,7 @@ print(linked_list_to_list(merged2))  # Should print [0]`,
     id: 20,
     title: "Fibonacci Number",
     difficulty: "Easy",
+    company: [""],
     description: `The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
 F(0) = 0, F(1) = 1
 F(n) = F(n-1) + F(n-2), for n > 1.
@@ -932,6 +893,7 @@ print(fibonacci(10)) # Should return 55`,
     title: "Valid Word Abbreviation",
     priority: "High",
     difficulty: "Easy",
+    company: [""],
     tags: ["String", "Two Pointers"],
     description: `A string can be abbreviated by replacing any number of non-adjacent, non-empty substrings with their lengths. The lengths should not have leading zeros.
 
@@ -983,6 +945,7 @@ print(valid_word_abbreviation("substitution", "s0ubstitution"))     # Should ret
     id: 22,
     title: "Buildings With an Ocean View",
     difficulty: "Medium",
+    company: [""],
     tags: ["Array", "Stack", "Monotonic Stack"],
     description: `There are n buildings in a line. You are given an integer array heights of size n that represents the heights of the buildings in the line.
 
@@ -1022,6 +985,7 @@ print(find_buildings([2, 2, 2, 2]))  # Should return [3]`,
     id: 23,
     title: "Binary Tree Vertical Order Traversal",
     difficulty: "Medium",
+    company: [""],
     tags: [
       "Hash Table",
       "Tree",
@@ -1111,6 +1075,7 @@ print(vertical_order(create_tree([])))                             # Should retu
     id: 24,
     title: "Binary Tree Right Side View",
     difficulty: "Medium",
+    company: [""],
     tags: ["Tree", "Depth-First Search", "Breadth-First Search", "Binary Tree"],
     description: `Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
 
@@ -1175,6 +1140,7 @@ print(right_side_view(create_tree([1, 2])))                       # Should retur
     id: 25,
     title: "Lowest Common Ancestor of a Binary Tree III",
     difficulty: "Medium",
+    company: ["Meta"],
     tags: ["Tree", "Hash Table", "Binary Tree"],
     description: `Given two nodes of a binary tree p and q, return their lowest common ancestor (LCA).
 
@@ -1282,6 +1248,7 @@ print(result3.val if result3 else None)  # Should return 1`,
     id: 26,
     title: "Merge Sorted Array",
     difficulty: "Easy",
+    company: [""],
     tags: ["Array", "Two Pointers", "Sorting"],
     description: `You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
 
@@ -1335,6 +1302,7 @@ print(nums3)  # Should print [1]`,
     id: 27,
     title: "Basic Calculator II",
     difficulty: "Medium",
+    company: [""],
     tags: ["String", "Stack", "Math"],
     description: `Given a string s which represents an expression, evaluate this expression and return its value.
 
@@ -1373,6 +1341,7 @@ print(calculate("14-3/2"))      # Should return 13`,
     id: 28,
     title: "Diameter of Binary Tree",
     difficulty: "Easy",
+    company: [""],
     tags: ["Tree", "Depth-First Search", "Binary Tree"],
     description: `Given the root of a binary tree, return the length of the diameter of the tree.
 
@@ -1432,5 +1401,316 @@ def create_tree(values):
 print(diameter_of_binary_tree(create_tree([1,2,3,4,5])))  # Should return 3
 print(diameter_of_binary_tree(create_tree([1,2])))        # Should return 1
 print(diameter_of_binary_tree(create_tree([1])))          # Should return 0`,
+  },
+  {
+    id: 29,
+    title: "Valid Palindrome",
+    difficulty: "Easy",
+    company: ["Meta", "Amazon", "Microsoft"],
+    tags: ["Two Pointers", "String"],
+    description: `A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+Given a string s, return true if it is a palindrome, or false otherwise.
+
+Example 1:
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+
+Example 2:
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
+
+Example 3:
+Input: s = " "
+Output: true
+Explanation: s is an empty string "" after removing non-alphanumeric characters.
+Since an empty string reads the same forward and backward, it is a palindrome.`,
+    code: `def is_palindrome(s):
+    """
+    :type s: str
+    :rtype: bool
+    """
+    # Your code here
+
+
+# Test cases
+print(is_palindrome("A man, a plan, a canal: Panama"))  # Should return True
+print(is_palindrome("race a car"))                      # Should return False
+print(is_palindrome(" "))                               # Should return True
+print(is_palindrome("0P"))                              # Should return False`,
+  },
+  {
+    id: 30,
+    title: "Number of Islands",
+    difficulty: "Medium",
+    company: ["Meta"],
+    tags: [
+      "Array",
+      "Depth-First Search",
+      "Breadth-First Search",
+      "Union Find",
+      "Matrix",
+    ],
+    description: `Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+Example 1:
+Input: grid = [
+  ["1","1","1","1","0"],
+  ["1","1","0","1","0"],
+  ["1","1","0","0","0"],
+  ["0","0","0","0","0"]
+]
+Output: 1
+
+Example 2:
+Input: grid = [
+  ["1","1","0","0","0"],
+  ["1","1","0","0","0"],
+  ["0","0","1","0","0"],
+  ["0","0","0","1","1"]
+]
+Output: 3`,
+    code: `def num_islands(grid):
+    """
+    :type grid: List[List[str]]
+    :rtype: int
+    """
+    # Your code here
+
+
+# Test cases
+grid1 = [
+  ["1","1","1","1","0"],
+  ["1","1","0","1","0"],
+  ["1","1","0","0","0"],
+  ["0","0","0","0","0"]
+]
+print(num_islands(grid1))  # Should return 1
+
+grid2 = [
+  ["1","1","0","0","0"],
+  ["1","1","0","0","0"],
+  ["0","0","1","0","0"],
+  ["0","0","0","1","1"]
+]
+print(num_islands(grid2))  # Should return 3`,
+  },
+  {
+    id: 23,
+    title: "Merge k Sorted Lists",
+    difficulty: "Hard",
+    company: ["Meta"],
+    tags: [
+      "Linked List",
+      "Divide and Conquer",
+      "Heap (Priority Queue)",
+      "Merge Sort",
+    ],
+    description: `You are given an array of k linked-lists lists, each linked-list is sorted in ascending order.
+
+Merge all the linked-lists into one sorted linked-list and return it.
+
+Example 1:
+Input: lists = [[1,4,5],[1,3,4],[2,6]]
+Output: [1,1,2,3,4,4,5,6]
+Explanation: The linked-lists are:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+merging them into one sorted list:
+1->1->2->3->4->4->5->6
+
+Example 2:
+Input: lists = []
+Output: []
+
+Example 3:
+Input: lists = [[]]
+Output: []`,
+    code: `# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+def merge_k_lists(lists):
+    """
+    :type lists: List[ListNode]
+    :rtype: ListNode
+    """
+    # Your code here
+
+
+# Helper function to create a linked list from a list
+def create_linked_list(lst):
+    dummy = ListNode(0)
+    curr = dummy
+    for val in lst:
+        curr.next = ListNode(val)
+        curr = curr.next
+    return dummy.next
+
+# Helper function to convert linked list to list for printing
+def linked_list_to_list(head):
+    result = []
+    while head:
+        result.append(head.val)
+        head = head.next
+    return result
+
+# Test cases
+list1 = create_linked_list([1, 4, 5])
+list2 = create_linked_list([1, 3, 4])
+list3 = create_linked_list([2, 6])
+merged = merge_k_lists([list1, list2, list3])
+print(linked_list_to_list(merged))  # Should return [1, 1, 2, 3, 4, 4, 5, 6]
+
+print(linked_list_to_list(merge_k_lists([])))  # Should return []
+print(linked_list_to_list(merge_k_lists([create_linked_list([])])))  # Should return []`,
+  },
+  {
+    id: 138,
+    title: "Copy List with Random Pointer",
+    difficulty: "Medium",
+    company: ["Meta"],
+    tags: ["Hash Table", "Linked List"],
+    description: `A linked list of length n is given such that each node contains an additional random pointer, which could point to any node in the list, or null.
+
+Construct a deep copy of the list. The deep copy should consist of exactly n brand new nodes, where each new node has its value set to the value of its corresponding original node. Both the next and random pointer of the new nodes should point to new nodes in the copied list such that the pointers in the original list and copied list represent the same list state. None of the pointers in the new list should point to nodes in the original list.
+
+For example, if there are two nodes X and Y in the original list, where X.random --> Y, then for the corresponding two nodes x and y in the copied list, x.random --> y.
+
+Return the head of the copied linked list.
+
+The linked list is represented in the input/output as a list of n nodes. Each node is represented as a pair of [val, random_index] where:
+
+val: an integer representing Node.val
+random_index: the index of the node (range from 0 to n-1) that the random pointer points to, or null if it does not point to any node.
+Your code will only be given the head of the original linked list.
+
+Example 1:
+Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+Output: [[7,null],[13,0],[11,4],[10,2],[1,0]]
+
+Example 2:
+Input: head = [[1,1],[2,1]]
+Output: [[1,1],[2,1]]
+
+Example 3:
+Input: head = [[3,null],[3,0],[3,null]]
+Output: [[3,null],[3,0],[3,null]]`,
+    code: `# Definition for a Node.
+class Node:
+    def __init__(self, x, next=None, random=None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+
+def copyRandomList(head):
+    """
+    :type head: Node
+    :rtype: Node
+    """
+    # Your code here
+
+
+# Helper function to create a linked list with random pointers
+def create_linked_list_with_random(values):
+    if not values:
+        return None
+
+    # Create nodes first
+    nodes = []
+    for val, _ in values:
+        nodes.append(Node(val))
+
+    # Connect nodes
+    for i in range(len(nodes) - 1):
+        nodes[i].next = nodes[i+1]
+
+    # Set random pointers
+    for i, (_, random_idx) in enumerate(values):
+        if random_idx is not None:
+            nodes[i].random = nodes[random_idx]
+
+    return nodes[0]
+
+# Helper function to convert a linked list with random pointers to a list
+def linked_list_to_list_with_random(head):
+    if not head:
+        return []
+
+    # Map nodes to indices
+    node_to_idx = {}
+    curr = head
+    idx = 0
+    while curr:
+        node_to_idx[curr] = idx
+        curr = curr.next
+        idx += 1
+
+    # Create result list
+    result = []
+    curr = head
+    while curr:
+        random_idx = node_to_idx[curr.random] if curr.random else None
+        result.append([curr.val, random_idx])
+        curr = curr.next
+
+    return result
+
+# Test cases
+head1 = create_linked_list_with_random([[7, None], [13, 0], [11, 4], [10, 2], [1, 0]])
+copied1 = copyRandomList(head1)
+print(linked_list_to_list_with_random(copied1))  # Should match input
+
+head2 = create_linked_list_with_random([[1, 1], [2, 1]])
+copied2 = copyRandomList(head2)
+print(linked_list_to_list_with_random(copied2))  # Should match input
+
+head3 = create_linked_list_with_random([])
+copied3 = copyRandomList(head3)
+print(linked_list_to_list_with_random(copied3))  # Should be []`,
+  },
+  {
+    id: 301,
+    title: "Remove Invalid Parentheses",
+    difficulty: "Hard",
+    company: ["Meta"],
+    tags: ["String", "Backtracking", "Breadth-First Search"],
+    description: `Given a string s that contains parentheses and letters, remove the minimum number of invalid parentheses to make the input string valid.
+
+Return all the possible results. You may return the answer in any order.
+
+Example 1:
+Input: s = "()())()"
+Output: ["(())()","()()()"]
+
+Example 2:
+Input: s = "(a)())()"
+Output: ["(a())()","(a)()()"]
+
+Example 3:
+Input: s = ")("
+Output: [""]`,
+    code: `def remove_invalid_parentheses(s):
+    """
+    :type s: str
+    :rtype: List[str]
+    """
+    # Your code here
+
+
+# Test cases
+print(remove_invalid_parentheses("()())()"))  # Should return ["(())()","()()()"]
+print(remove_invalid_parentheses("(a)())()"))  # Should return ["(a())()","(a)()()"]
+print(remove_invalid_parentheses(")("))  # Should return [""]
+print(remove_invalid_parentheses("()"))  # Should return ["()"]`,
   },
 ];
