@@ -1,40 +1,5 @@
 export const sampleProblems = [
   {
-    id: 1,
-    title: "Valid Palindrome II",
-    difficulty: "Medium",
-    company: [""],
-    tags: ["String", "Two Pointers", "Greedy"],
-    description: `Given a string s, return true if the s can be palindrome after deleting at most one character from it.
-
-Example 1:
-Input: s = "aba"
-Output: true
-
-Example 2:
-Input: s = "abca"
-Output: true
-Explanation: You could delete the character 'c'.
-
-Example 3:
-Input: s = "abc"
-Output: false`,
-    code: `def valid_palindrome_ii(s):
-    """
-    :type s: str
-    :rtype: bool
-    """
-    # Your code here
-
-
-# Test cases
-print(valid_palindrome_ii("aba"))     # Should return True
-print(valid_palindrome_ii("abca"))    # Should return True
-print(valid_palindrome_ii("abc"))     # Should return False
-print(valid_palindrome_ii("deeee"))   # Should return True
-print(valid_palindrome_ii("abccdba")) # Should return False`,
-  },
-  {
     id: 2,
     title: "Decode String",
     difficulty: "Medium",
@@ -1406,7 +1371,7 @@ print(diameter_of_binary_tree(create_tree([1])))          # Should return 0`,
     id: 29,
     title: "Valid Palindrome",
     difficulty: "Easy",
-    company: ["Meta", "Amazon", "Microsoft"],
+    company: ["Microsoft"],
     tags: ["Two Pointers", "String"],
     description: `A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
 
@@ -1712,5 +1677,40 @@ print(remove_invalid_parentheses("()())()"))  # Should return ["(())()","()()()"
 print(remove_invalid_parentheses("(a)())()"))  # Should return ["(a())()","(a)()()"]
 print(remove_invalid_parentheses(")("))  # Should return [""]
 print(remove_invalid_parentheses("()"))  # Should return ["()"]`,
+  },
+  {
+    id: 31,
+    title: "Valid Palindrome II",
+    difficulty: "Easy",
+    company: ["Meta"],
+    tags: ["Two Pointers", "String", "Greedy"],
+    description: `Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+
+Example 1:
+Input: s = "aba"
+Output: true
+
+Example 2:
+Input: s = "abca"
+Output: true
+Explanation: You could delete the character 'c'.
+
+Example 3:
+Input: s = "abc"
+Output: false`,
+    code: `def valid_palindrome_2(s):
+    """
+    :type s: str
+    :rtype: bool
+    """
+    # Your code here
+
+
+# Test cases
+print(valid_palindrome_2("aba"))   # Should return True
+print(valid_palindrome_2("abca"))  # Should return True
+print(valid_palindrome_2("abc"))   # Should return False
+print(valid_palindrome_2("deeee")) # Should return True
+print(valid_palindrome_2("cbbcc")) # Should return True`,
   },
 ];
