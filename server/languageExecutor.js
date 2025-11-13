@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import { basename, dirname } from 'path';
+import tarStream from 'tar-stream';
 
 class LanguageExecutor {
   constructor(containerPoolManager, languageConfigs) {
@@ -66,8 +67,7 @@ class LanguageExecutor {
   async writeCodeToContainer(container, filePath, code) {
     try {
       // Create a tar archive with the code file
-      const tar = require('tar-stream');
-      const pack = tar.pack();
+      const pack = tarStream.pack();
 
       // Add the code file to the archive
       pack.entry({ name: basename(filePath) }, code, (err) => {
