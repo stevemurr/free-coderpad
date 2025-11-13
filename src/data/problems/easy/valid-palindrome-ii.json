@@ -1,0 +1,19 @@
+{
+  "id": 31,
+  "title": "Valid Palindrome II",
+  "difficulty": "Easy",
+  "company": [
+    "Meta"
+  ],
+  "tags": [
+    "Two Pointers",
+    "String",
+    "Greedy"
+  ],
+  "description": "Given a string `s`, return `true` if the `s` can be **palindrome** after deleting **at most one** character from it.\n\n### Example 1\n\n**Input:** `s = \"aba\"`  \n**Output:** `true`\n\n### Example 2\n\n**Input:** `s = \"abca\"`  \n**Output:** `true`  \n**Explanation:** You could delete the character `'c'`.\n\n### Example 3\n\n**Input:** `s = \"abc\"`  \n**Output:** `false`",
+  "languages": {
+    "python": {
+      "starterCode": "def valid_palindrome_2(s):\n    \"\"\"\n    :type s: str\n    :rtype: bool\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(valid_palindrome_2(\"aba\"))   # Should return True\nprint(valid_palindrome_2(\"abca\"))  # Should return True\nprint(valid_palindrome_2(\"abc\"))   # Should return False\nprint(valid_palindrome_2(\"deeee\")) # Should return True\nprint(valid_palindrome_2(\"cbbcc\")) # Should return True"
+    }
+  }
+}

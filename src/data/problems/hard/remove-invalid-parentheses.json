@@ -1,0 +1,19 @@
+{
+  "id": 301,
+  "title": "Remove Invalid Parentheses",
+  "difficulty": "Hard",
+  "company": [
+    "Meta"
+  ],
+  "tags": [
+    "String",
+    "Backtracking",
+    "Breadth-First Search"
+  ],
+  "description": "Given a string `s` that contains parentheses and letters, remove the **minimum number** of invalid parentheses to make the input string **valid**.\n\nReturn all the possible results. You may return the answer in any order.\n\n### Example 1\n\n**Input:** `s = \"()())()\"`  \n**Output:** `[\"(())()\", \"()()()\"]`\n\n### Example 2\n\n**Input:** `s = \"(a)())()\"`  \n**Output:** `[\"(a())()\", \"(a)()()\"]`\n\n### Example 3\n\n**Input:** `s = \")(\"`  \n**Output:** `[\"\"]`",
+  "languages": {
+    "python": {
+      "starterCode": "def remove_invalid_parentheses(s):\n    \"\"\"\n    :type s: str\n    :rtype: List[str]\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(remove_invalid_parentheses(\"()())()\"))  # Should return [\"(())()\",\"()()()\"]\nprint(remove_invalid_parentheses(\"(a)())()\"))  # Should return [\"(a())()\",\"(a)()()\"]\nprint(remove_invalid_parentheses(\")(\"))  # Should return [\"\"]\nprint(remove_invalid_parentheses(\"()\"))  # Should return [\"()\"]"
+    }
+  }
+}

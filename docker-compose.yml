@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # Main application (React + Express)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # React dev server
+      - "3001:3001"  # Express API
+    volumes:
+      # Mount source code for hot reload during development
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./server:/app/server
+      - ./server.js:/app/server.js
+      # Mount Docker socket so the app can manage containers
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Prevent node_modules from being overwritten
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true  # Enable hot reload in Docker
+    depends_on:
+      docker-warmup:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  # Service to pre-pull Docker images for language runtimes
+  docker-warmup:
+    image: docker:24-cli
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: >
+      sh -c "
+        echo 'Pulling language runtime images...' &&
+        docker pull python:3.11-slim &&
+        echo 'All images pulled successfully!'
+      "

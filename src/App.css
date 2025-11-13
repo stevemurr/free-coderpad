@@ -1,50 +1,118 @@
 .python-editor-container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 1.5rem;
     transition: background-color 0.3s ease;
 }
 
-@media (min-width: 1024px) {
-    .python-editor-container {
-        max-width: 1400px; /* Increased to accommodate the wider layout */
-    }
-
-    /* Create a flex container for the editor and output sections */
-    .editor-output-container {
-        display: flex;
-        gap: 1.5rem;
-        align-items: stretch;
-    }
-
-    /* Set the editor section to take up more space */
-    .editor-section {
-        flex: 3;
-        margin-bottom: 0; /* Remove bottom margin since they're side by side */
-    }
-
-    /* Style the output section */
-    .output-section {
-        flex: 2;
-        display: flex;
-        flex-direction: column;
-        min-width: 300px;
-    }
+/* Main workspace container - 50/50 split */
+.main-workspace-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: stretch;
+    height: calc(100vh - 200px); /* Fixed height to ensure equal panel heights */
 }
 
-/* On smaller screens, keep the stacked layout */
+/* Left panel - Problem statement (50%) */
+.left-panel {
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Right panel - Code editor + output stacked vertically (50%) */
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    height: 100%;
+}
+
+/* Editor section - takes 60% of right panel height */
+.editor-section {
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Allow flex to shrink below content size */
+    overflow: hidden;
+    position: relative;
+}
+
+/* No problem selected placeholder */
+.no-problem-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 3rem;
+    text-align: center;
+    background: var(--bg-secondary, #f8f9fa);
+    border-radius: 8px;
+    border: 2px dashed var(--border-color, #dee2e6);
+}
+
+.no-problem-placeholder h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-primary, #212529);
+    font-size: 1.5rem;
+}
+
+.no-problem-placeholder p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary, #6c757d);
+    font-size: 1rem;
+}
+
+.browse-problems-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background-color: var(--primary-color, #007bff);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.browse-problems-btn:hover {
+    background-color: var(--primary-hover, #0056b3);
+}
+
+/* Responsive layout - stack vertically on smaller screens */
 @media (max-width: 1023px) {
-    .editor-output-container {
-        display: block;
+    .main-workspace-container {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .left-panel,
+    .right-panel {
+        flex: none;
+        width: 100%;
     }
 
     .editor-section {
-        margin-bottom: 1.5rem;
+        min-height: 300px;
     }
 }
 
 @media (max-width: 768px) {
     .python-editor-container {
         padding: 1rem;
+    }
+
+    .main-workspace-container {
+        gap: 1rem;
+    }
+
+    .right-panel {
+        gap: 1rem;
+    }
+
+    .no-problem-placeholder {
+        padding: 2rem 1rem;
     }
 }

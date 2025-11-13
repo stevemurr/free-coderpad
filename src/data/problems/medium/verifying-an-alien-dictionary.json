@@ -1,0 +1,19 @@
+{
+  "id": 13,
+  "title": "Verifying an Alien Dictionary",
+  "difficulty": "Medium",
+  "company": [
+    ""
+  ],
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "In an alien language, surprisingly, they also use English lowercase letters, but possibly in a different order. The order of the alphabet is some **permutation** of lowercase letters.\n\nGiven a sequence of `words` written in the alien language, and the `order` of the alphabet, return `true` if and only if the given words are sorted **lexicographically** in this alien language.\n\n### Example 1\n\n**Input:** `words = [\"hello\", \"leetcode\"]`, `order = \"hlabcdefgijkmnopqrstuvwxyz\"`  \n**Output:** `true`  \n**Explanation:** As `'h'` comes before `'l'` in this language, then the sequence is sorted.\n\n### Example 2\n\n**Input:** `words = [\"word\", \"world\", \"row\"]`, `order = \"worldabcefghijkmnpqstuvxyz\"`  \n**Output:** `false`  \n**Explanation:** As `'d'` comes after `'l'` in this language, then `words[0] > words[1]`, hence the sequence is unsorted.\n\n### Example 3\n\n**Input:** `words = [\"apple\", \"app\"]`, `order = \"abcdefghijklmnopqrstuvwxyz\"`  \n**Output:** `false`  \n**Explanation:** The first three characters `\"app\"` match, and the second string is shorter (in size.) According to lexicographical rules `\"apple\" > \"app\"`, because `'l' > '∅'`, where `'∅'` is defined as the blank character which is less than any other character.",
+  "languages": {
+    "python": {
+      "starterCode": "def is_alien_sorted(words, order):\n    \"\"\"\n    :type words: List[str]\n    :type order: str\n    :rtype: bool\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(is_alien_sorted([\"hello\", \"leetcode\"], \"hlabcdefgijkmnopqrstuvwxyz\"))  # Should return True\nprint(is_alien_sorted([\"word\", \"world\", \"row\"], \"worldabcefghijkmnpqstuvxyz\"))  # Should return False\nprint(is_alien_sorted([\"apple\", \"app\"], \"abcdefghijklmnopqrstuvwxyz\"))  # Should return False\nprint(is_alien_sorted([\"app\", \"apple\"], \"abcdefghijklmnopqrstuvwxyz\"))  # Should return True"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://free-coderpad.local/problem.schema.json",
+  "title": "Coding Problem",
+  "description": "Schema for coding interview problems",
+  "type": "object",
+  "required": ["id", "title", "difficulty", "description", "languages"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the problem",
+      "minimum": 1
+    },
+    "title": {
+      "type": "string",
+      "description": "Problem title",
+      "minLength": 1
+    },
+    "difficulty": {
+      "type": "string",
+      "description": "Problem difficulty level",
+      "enum": ["Easy", "Medium", "Hard"]
+    },
+    "priority": {
+      "type": "string",
+      "description": "Optional priority flag",
+      "enum": ["High"]
+    },
+    "company": {
+      "type": "array",
+      "description": "Companies that have asked this question",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "tags": {
+      "type": "array",
+      "description": "Topic tags for categorization",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "description": {
+      "type": "string",
+      "description": "Full problem description with examples",
+      "minLength": 1
+    },
+    "languages": {
+      "type": "object",
+      "description": "Language-specific implementations",
+      "minProperties": 1,
+      "patternProperties": {
+        "^[a-z]+$": {
+          "type": "object",
+          "required": ["starterCode"],
+          "properties": {
+            "starterCode": {
+              "type": "string",
+              "description": "Starter code template for this language",
+              "minLength": 1
+            },
+            "solution": {
+              "type": "string",
+              "description": "Optional reference solution"
+            },
+            "testCases": {
+              "type": "string",
+              "description": "Optional test cases"
+            }
+          }
+        }
+      }
+    }
+  }
+}

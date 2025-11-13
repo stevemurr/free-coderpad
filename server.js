@@ -1,136 +1,161 @@
-// server.js - Express server for Python code execution
-const express = require("express");
-const { exec } = require("child_process");
-const fs = require("fs");
-const path = require("path");
-const cors = require("cors");
+// server.js - Express server for containerized code execution
+import express, { json } from "express";
+import cors from "cors";
+import { ContainerPoolManager } from "./server/containerPool.js";
+import { LanguageExecutor } from "./server/languageExecutor.js";
+
 const app = express();
 const port = 3001;
 
+// Load language configurations
+import languageConfigs from "./server/config/languages.json" with { type: "json" };
+
+// Initialize container pool manager and language executor
+let containerPoolManager;
+let languageExecutor;
+
 // Enable CORS for frontend requests
 app.use(cors());
-app.use(express.json());
+app.use(json());
 
-// Temporary directory for code files
-const TEMP_DIR = path.join(__dirname, "temp");
-if (!fs.existsSync(TEMP_DIR)) {
-  fs.mkdirSync(TEMP_DIR);
+// Initialize container pools on startup
+async function initializeContainerPools() {
+  try {
+    console.log("[Server] Initializing container pools...");
+    containerPoolManager = new ContainerPoolManager(languageConfigs);
+    await containerPoolManager.initialize();
+
+    languageExecutor = new LanguageExecutor(containerPoolManager, languageConfigs);
+    console.log("[Server] Container pools initialized successfully");
+  } catch (error) {
+    console.error("[Server] Failed to initialize container pools:", error.message);
+    console.error("[Server] The server will start but code execution may fail");
+  }
 }
 
-// Execute Python code endpoint
+// Execute code endpoint
 app.post("/api/execute", async (req, res) => {
-  const { code } = req.body;
+  const { code, language = "python" } = req.body;
 
   if (!code) {
     return res.status(400).json({ error: "No code provided" });
   }
 
-  // Create a unique filename
-  const timestamp = Date.now();
-  const filename = `python_${timestamp}.py`;
-  const filepath = path.join(TEMP_DIR, filename);
+  if (!languageExecutor) {
+    return res.status(503).json({
+      error: "Code execution service is not ready yet. Please try again in a moment."
+    });
+  }
 
   try {
-    // Write code to temporary file
-    fs.writeFileSync(filepath, code);
+    console.log(`[Server] Executing ${language} code...`);
 
-    // Set timeout to prevent infinite loops
-    const timeoutMs = 5000;
+    const result = await languageExecutor.executeCode(code, language);
 
-    // Execute Python code (with timeout)
-    exec(
-      `python3 ${filepath}`,
-      { timeout: timeoutMs },
-      (error, stdout, stderr) => {
-        // Clean up temp file
-        fs.unlinkSync(filepath);
+    // Log execution result
+    const excerpt = code.length > 50 ? code.substring(0, 50) + "..." : code;
+    console.log(`[${new Date().toISOString()}] Execution completed for: ${excerpt}`);
+    console.log(`Output (${result.output.length} bytes)${result.error ? ' with errors' : ''}`);
 
-        if (error) {
-          // Determine if it's a timeout error
-          if (error.killed && error.signal === "SIGTERM") {
-            return res.status(400).json({
-              error:
-                "Execution timed out. Check for infinite loops or long-running processes.",
-            });
-          }
+    // Return result
+    res.json({
+      output: result.output,
+      error: result.error,
+      exitCode: result.exitCode,
+      timedOut: result.timedOut
+    });
 
-          // Handle syntax or runtime errors
-          return res.status(400).json({
-            error:
-              stderr || error.message || "An error occurred during execution",
-          });
-        }
+  } catch (error) {
+    console.error("[Server] Execution error:", error.message);
 
-        // Log execution result with timestamp and code excerpt
-        const excerpt = code.length > 50 ? code.substring(0, 50) + "..." : code;
-        console.log(
-          `[${new Date().toISOString()}] Execution completed for: ${excerpt}`,
-        );
-        console.log(`Output (${stdout.length} bytes):\n${stdout.trim()}`);
+    // Handle different types of errors
+    if (error.message.includes("timeout")) {
+      return res.status(408).json({
+        error: "Execution timed out. Check for infinite loops or long-running processes.",
+        timedOut: true
+      });
+    }
 
-        // Return successful output
-        res.json({
-          output: stdout,
-          error: stderr,
-        });
-      },
-    );
-  } catch (err) {
-    console.error("Server error:", err);
-    res.status(500).json({ error: "Server error occurred" });
+    if (error.message.includes("Unsupported language") || error.message.includes("not enabled")) {
+      return res.status(400).json({ error: error.message });
+    }
+
+    res.status(500).json({
+      error: error.message || "An error occurred during execution"
+    });
   }
 });
 
-// For handling Docker execution (alternative approach)
-app.post("/api/execute-docker", async (req, res) => {
-  const { code } = req.body;
-
-  if (!code) {
-    return res.status(400).json({ error: "No code provided" });
+// Get available languages
+app.get("/api/languages", (req, res) => {
+  if (!languageExecutor) {
+    return res.status(503).json({
+      error: "Language service is not ready yet"
+    });
   }
 
-  // Create a unique filename
-  const timestamp = Date.now();
-  const filename = `python_${timestamp}.py`;
-  const filepath = path.join(TEMP_DIR, filename);
+  try {
+    const languages = languageExecutor.getAvailableLanguages();
+    res.json({ languages });
+  } catch (error) {
+    console.error("[Server] Error getting languages:", error.message);
+    res.status(500).json({ error: "Failed to get available languages" });
+  }
+});
+
+// Get container pool statistics (for monitoring)
+app.get("/api/pool-stats", (req, res) => {
+  if (!containerPoolManager) {
+    return res.status(503).json({
+      error: "Container pool manager is not ready yet"
+    });
+  }
 
   try {
-    // Write code to temporary file
-    fs.writeFileSync(filepath, code);
-
-    // Execute in Docker for better isolation
-    exec(
-      `docker run --rm -v ${filepath}:/code.py python:3.9-alpine python /code.py`,
-      { timeout: 10000 }, // 10 second timeout
-      (error, stdout, stderr) => {
-        // Clean up temp file
-        fs.unlinkSync(filepath);
-
-        if (error) {
-          return res.status(400).json({
-            error:
-              stderr || error.message || "An error occurred during execution",
-          });
-        }
-
-        res.json({
-          output: stdout,
-          error: stderr,
-        });
-      },
-    );
-  } catch (err) {
-    console.error("Server error:", err);
-    res.status(500).json({ error: "Server error occurred" });
+    const stats = containerPoolManager.getAllStats();
+    res.json({ stats });
+  } catch (error) {
+    console.error("[Server] Error getting pool stats:", error.message);
+    res.status(500).json({ error: "Failed to get pool statistics" });
   }
 });
 
 // Health check endpoint
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ok" });
+  const health = {
+    status: "ok",
+    containerPoolsReady: !!containerPoolManager,
+    languageExecutorReady: !!languageExecutor,
+    timestamp: new Date().toISOString()
+  };
+
+  if (containerPoolManager) {
+    health.poolStats = containerPoolManager.getAllStats();
+  }
+
+  res.json(health);
 });
 
+// Graceful shutdown handler
+async function gracefulShutdown(signal) {
+  console.log(`\n[Server] ${signal} received. Starting graceful shutdown...`);
+
+  if (containerPoolManager) {
+    await containerPoolManager.cleanup();
+  }
+
+  process.exit(0);
+}
+
+// Register shutdown handlers
+process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
+process.on("SIGINT", () => gracefulShutdown("SIGINT"));
+
 // Start the server
-app.listen(port, () => {
-  console.log(`Python execution server running at http://localhost:${port}`);
+app.listen(port, async () => {
+  console.log(`Code execution server running at http://localhost:${port}`);
+  console.log(`Health check: http://localhost:${port}/api/health`);
+
+  // Initialize container pools after server starts
+  await initializeContainerPools();
 });

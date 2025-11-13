@@ -1,0 +1,15 @@
+{
+  "id": 16,
+  "title": "Two Sum",
+  "difficulty": "Easy",
+  "company": [
+    ""
+  ],
+  "tags": [],
+  "description": "Given an array of integers `nums` and an integer `target`, return **indices** of the two numbers such that they add up to `target`.\n\nYou may assume that each input would have **exactly one solution**, and you may not use the same element twice.\n\nYou can return the answer in any order.\n\n### Example 1\n\n**Input:** `nums = [2, 7, 11, 15]`, `target = 9`  \n**Output:** `[0, 1]`  \n**Explanation:** Because `nums[0] + nums[1] == 9`, we return `[0, 1]`.\n\n### Example 2\n\n**Input:** `nums = [3, 2, 4]`, `target = 6`  \n**Output:** `[1, 2]`\n\n### Constraints\n\n- `2 <= nums.length <= 10^4`\n- `-10^9 <= nums[i] <= 10^9`\n- `-10^9 <= target <= 10^9`\n- Only one valid answer exists\n\n### Follow-up\n\nCan you come up with an algorithm that is less than `O(n^2)` time complexity?",
+  "languages": {
+    "python": {
+      "starterCode": "def two_sum(nums, target):\n    # Your code here\n    pass\n\n# Test cases\nprint(two_sum([2, 7, 11, 15], 9))  # Should return [0, 1]\nprint(two_sum([3, 2, 4], 6))       # Should return [1, 2]\nprint(two_sum([3, 3], 6))          # Should return [0, 1]"
+    }
+  }
+}

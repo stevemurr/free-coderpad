@@ -1,0 +1,20 @@
+{
+  "id": 8,
+  "title": "Clone Graph",
+  "difficulty": "Medium",
+  "company": [
+    ""
+  ],
+  "tags": [
+    "Hash Table",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph"
+  ],
+  "description": "Given a reference of a node in a **connected undirected graph**.\n\nReturn a **deep copy** (clone) of the graph.\n\nEach node in the graph contains a value (`int`) and a list (`List[Node]`) of its neighbors.\n\n```\nclass Node {\n    public int val;\n    public List<Node> neighbors;\n}\n```\n\n**Test case format:**\n\nFor simplicity, each node's value is the same as the node's index (1-indexed). For example, the first node with `val == 1`, the second node with `val == 2`, and so on. The graph is represented in the test case using an **adjacency list**.\n\nAn **adjacency list** is a collection of unordered lists used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.\n\nThe given node will always be the first node with `val = 1`. You must return the copy of the given node as a reference to the cloned graph.\n\n### Example 1\n\n**Input:** `adjList = [[2, 4], [1, 3], [2, 4], [1, 3]]`  \n**Output:** `[[2, 4], [1, 3], [2, 4], [1, 3]]`  \n**Explanation:** There are 4 nodes in the graph.\n- 1st node (val = 1)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).\n- 2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).\n- 3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).\n- 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).",
+  "languages": {
+    "python": {
+      "starterCode": "# Definition for a Node.\nclass Node:\n    def __init__(self, val = 0, neighbors = None):\n        self.val = val\n        self.neighbors = neighbors if neighbors is not None else []\n\ndef clone_graph(node):\n    \"\"\"\n    :type node: Node\n    :rtype: Node\n    \"\"\"\n    # Your code here\n\n\n# Create and test graph\ndef build_graph(adjacency_list):\n    if not adjacency_list:\n        return None\n\n    # Create all nodes\n    nodes = {i+1: Node(i+1) for i in range(len(adjacency_list))}\n\n    # Add neighbors\n    for i, neighbors in enumerate(adjacency_list):\n        nodes[i+1].neighbors = [nodes[neighbor] for neighbor in neighbors]\n\n    return nodes[1]\n\ndef graph_to_adjacency_list(node):\n    if not node:\n        return []\n\n    visited = {}\n    result = []\n\n    def dfs(node):\n        if node.val in visited:\n            return\n        visited[node.val] = True\n        while len(result) < node.val:\n            result.append([])\n        result[node.val - 1] = [neighbor.val for neighbor in node.neighbors]\n        for neighbor in node.neighbors:\n            dfs(neighbor)\n\n    dfs(node)\n    return result\n\n# Test cases\ngraph1 = build_graph([[2,4],[1,3],[2,4],[1,3]])\ncloned1 = clone_graph(graph1)\nprint(graph_to_adjacency_list(cloned1))  # Should print [[2,4],[1,3],[2,4],[1,3]]\n\ngraph2 = build_graph([[2],[1]])\ncloned2 = clone_graph(graph2)\nprint(graph_to_adjacency_list(cloned2))  # Should print [[2],[1]]\n\ngraph3 = build_graph([])\ncloned3 = clone_graph(graph3)\nprint(graph_to_adjacency_list(cloned3))  # Should print []"
+    }
+  }
+}

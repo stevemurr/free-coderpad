@@ -1,0 +1,19 @@
+{
+  "id": 21,
+  "title": "Valid Word Abbreviation",
+  "difficulty": "Easy",
+  "company": [
+    ""
+  ],
+  "tags": [
+    "String",
+    "Two Pointers"
+  ],
+  "description": "A string can be **abbreviated** by replacing any number of non-adjacent, non-empty substrings with their lengths. The lengths should not have **leading zeros**.\n\nFor example, a string such as `\"substitution\"` could be abbreviated as (but not limited to):\n- `\"s10n\"` (`\"s ubstitutio n\"`)\n- `\"sub4u4\"` (`\"sub stit u tion\"`)\n- `\"12\"` (`\"substitution\"`)\n- `\"su3i1u2on\"` (`\"su bst i t u ti on\"`)\n- `\"substitution\"` (no substrings replaced)\n\nThe following are **not valid** abbreviations:\n- `\"s55n\"` (`\"s ubsti tutio n\"`, the replaced substrings are adjacent)\n- `\"s010n\"` (has leading zeros)\n- `\"s0ubstitution\"` (replaces an empty substring)\n\nGiven a string `word` and an abbreviation `abbr`, return whether the string matches the given abbreviation.\n\n### Example 1\n\n**Input:** `word = \"internationalization\"`, `abbr = \"i12iz4n\"`  \n**Output:** `true`  \n**Explanation:** The word `\"internationalization\"` can be abbreviated as `\"i12iz4n\"` (`\"i nternational iz atio n\"`).\n\n### Example 2\n\n**Input:** `word = \"apple\"`, `abbr = \"a2e\"`  \n**Output:** `false`  \n**Explanation:** The word `\"apple\"` cannot be abbreviated as `\"a2e\"`.",
+  "languages": {
+    "python": {
+      "starterCode": "def valid_word_abbreviation(word, abbr):\n    \"\"\"\n    :type word: str\n    :type abbr: str\n    :rtype: bool\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(valid_word_abbreviation(\"internationalization\", \"i12iz4n\"))  # Should return True\nprint(valid_word_abbreviation(\"apple\", \"a2e\"))                      # Should return False\nprint(valid_word_abbreviation(\"substitution\", \"s10n\"))              # Should return True\nprint(valid_word_abbreviation(\"substitution\", \"sub4u4\"))            # Should return True\nprint(valid_word_abbreviation(\"substitution\", \"12\"))                # Should return True\nprint(valid_word_abbreviation(\"substitution\", \"su3i1u2on\"))         # Should return True\nprint(valid_word_abbreviation(\"substitution\", \"substitution\"))      # Should return True\nprint(valid_word_abbreviation(\"substitution\", \"s55n\"))              # Should return False\nprint(valid_word_abbreviation(\"substitution\", \"s010n\"))             # Should return False\nprint(valid_word_abbreviation(\"substitution\", \"s0ubstitution\"))     # Should return False"
+    }
+  },
+  "priority": "High"
+}

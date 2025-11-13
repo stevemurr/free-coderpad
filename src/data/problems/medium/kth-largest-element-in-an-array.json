@@ -1,0 +1,22 @@
+{
+  "id": 9,
+  "title": "Kth Largest Element in an Array",
+  "difficulty": "Medium",
+  "company": [
+    "Meta"
+  ],
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Quickselect"
+  ],
+  "description": "Given an integer array `nums` and an integer `k`, return the `kth` **largest element** in the array.\n\nNote that it is the `kth` largest element in the **sorted order**, not the `kth` **distinct element**.\n\nCan you solve it without sorting?\n\n### Example 1\n\n**Input:** `nums = [3, 2, 1, 5, 6, 4]`, `k = 2`  \n**Output:** `5`\n\n### Example 2\n\n**Input:** `nums = [3, 2, 3, 1, 2, 4, 5, 5, 6]`, `k = 4`  \n**Output:** `4`",
+  "languages": {
+    "python": {
+      "starterCode": "def find_kth_largest(nums, k):\n    \"\"\"\n    :type nums: List[int]\n    :type k: int\n    :rtype: int\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(find_kth_largest([3, 2, 1, 5, 6, 4], 2))          # Should return 5\nprint(find_kth_largest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4)) # Should return 4\nprint(find_kth_largest([1], 1))                         # Should return 1\nprint(find_kth_largest([7, 6, 5, 4, 3, 2, 1], 5))       # Should return 3"
+    }
+  },
+  "priority": "High"
+}

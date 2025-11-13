@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { EditorProvider } from "./contexts/EditorContext";
-import Header from "./components/Header";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Timer from "./components/common/Timer/Timer";
+import ThemeToggle from "./components/common/ThemeToggle/ThemeToggle";
 import SelectedProblemPanel from "./components/problems/SelectedProblemPanel";
 import EditorToolbar from "./components/editor/EditorToolbar";
 import CodeEditor from "./components/editor/CodeEditor";
@@ -33,20 +34,39 @@ const EditorWorkspace = () => {
 
   return (
     <div className="python-editor-container">
-      <Header toggleProblemLibrary={toggleProblemLibrary} />
-
+      <ThemeToggle />
       <Timer />
 
-      <div className="editor-output-container">
-        <div className="editor-section">
-          <EditorToolbar isLoading={isLoading} runCode={handleRunCode} />
-          <CodeEditor />
+      <div className="main-workspace-container">
+        {/* Left Panel - Problem Statement */}
+        <div className="left-panel">
+          {selectedProblem ? (
+            <SelectedProblemPanel
+              problem={selectedProblem}
+              onBrowseProblems={toggleProblemLibrary}
+            />
+          ) : (
+            <div className="no-problem-placeholder">
+              <h3>No Problem Selected</h3>
+              <p>Select a problem from the library to get started</p>
+              <button onClick={toggleProblemLibrary} className="browse-problems-btn">
+                Browse Problems
+              </button>
+            </div>
+          )}
         </div>
 
-        <OutputDisplay output={output} isLoading={isLoading} />
+        {/* Right Panel - Editor + Output */}
+        <div className="right-panel">
+          <div className="editor-section">
+            <EditorToolbar isLoading={isLoading} runCode={handleRunCode} />
+            <CodeEditor />
+          </div>
+
+          <OutputDisplay output={output} isLoading={isLoading} />
+        </div>
       </div>
-      <br />
-      {selectedProblem && <SelectedProblemPanel problem={selectedProblem} />}
+
       <Modal
         isOpen={showProblemLibrary}
         onClose={toggleProblemLibrary}
@@ -62,9 +82,11 @@ const EditorWorkspace = () => {
 const App = () => {
   return (
     <ThemeProvider>
-      <EditorProvider>
-        <EditorWorkspace />
-      </EditorProvider>
+      <LanguageProvider>
+        <EditorProvider>
+          <EditorWorkspace />
+        </EditorProvider>
+      </LanguageProvider>
     </ThemeProvider>
   );
 };

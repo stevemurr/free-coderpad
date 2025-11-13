@@ -10,14 +10,28 @@ import {
 import React, { useState, useEffect, useRef } from "react";
 import ProblemSelector from "./Selector/ProblemSelector";
 import OutputDisplay from "./OutputDisplay";
+import { useLanguage } from "../contexts/LanguageContext";
+
+// Language extension loader
+const getLanguageExtension = (languageId) => {
+  switch (languageId) {
+    case "python":
+      return python();
+    // Add more languages here when supported
+    default:
+      return python(); // Default to Python
+  }
+};
 
 const CodeEditor = () => {
+  const { selectedLanguage, getCurrentLanguage } = useLanguage();
+
   const [code, setCode] = useState(
     '# Write your Python code here\nprint("Hello, World!")\n\n# Try using some Python features\ndef greet(name):\n    return f"Hello, {name}!"\n\nfor i in range(3):\n    print(greet(f"user {i+1}"))',
   );
   const [output, setOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const [editorHeight, setEditorHeight] = useState(500);
   const [selectedProblem, setSelectedProblem] = useState(null);
   const [showProblemLibrary, setShowProblemLibrary] = useState(false);
@@ -135,7 +149,7 @@ const CodeEditor = () => {
           doc: code,
           extensions: [
             lineNumbers(),
-            python(),
+            getLanguageExtension(selectedLanguage),
             themeExtension,
             editorTheme,
             keymap.of([indentWithTab, ...defaultKeymap]),
@@ -207,7 +221,7 @@ const CodeEditor = () => {
         doc: currentCode,
         extensions: [
           lineNumbers(),
-          python(),
+          getLanguageExtension(selectedLanguage),
           themeExtension,
           editorTheme,
           keymap.of([indentWithTab, ...defaultKeymap]),
@@ -227,7 +241,7 @@ const CodeEditor = () => {
         });
       }
     }
-  }, [theme, editorHeight]);
+  }, [theme, editorHeight, selectedLanguage]);
 
   // Handle problem selection
   const handleSelectProblem = (problem) => {
@@ -299,7 +313,7 @@ const CodeEditor = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ code }),
+        body: JSON.stringify({ code, language: selectedLanguage }),
       });
 
       const result = await response.json();

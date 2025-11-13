@@ -1,0 +1,19 @@
+{
+  "id": 2,
+  "title": "Decode String",
+  "difficulty": "Medium",
+  "company": [
+    ""
+  ],
+  "tags": [
+    "String",
+    "Stack",
+    "Recursion"
+  ],
+  "description": "Given an encoded string, return its decoded string.\n\nThe encoding rule is: `k[encoded_string]`, where the `encoded_string` inside the square brackets is being repeated exactly `k` times. Note that `k` is guaranteed to be a positive integer.\n\nYou may assume that the input string is always valid; there are no extra white spaces, square brackets are well-formed, etc. Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, `k`. For example, there will not be input like `3a` or `2[4]`.\n\n### Example 1\n\n**Input:** `s = \"3[a]2[bc]\"`  \n**Output:** `\"aaabcbc\"`\n\n### Example 2\n\n**Input:** `s = \"3[a2[c]]\"`  \n**Output:** `\"accaccacc\"`\n\n### Example 3\n\n**Input:** `s = \"2[abc]3[cd]ef\"`  \n**Output:** `\"abcabccdcdcdef\"`",
+  "languages": {
+    "python": {
+      "starterCode": "def decode_string(s):\n    \"\"\"\n    :type s: str\n    :rtype: str\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(decode_string(\"3[a]2[bc]\"))      # Should return \"aaabcbc\"\nprint(decode_string(\"3[a2[c]]\"))       # Should return \"accaccacc\"\nprint(decode_string(\"2[abc]3[cd]ef\"))  # Should return \"abcabccdcdcdef\"\nprint(decode_string(\"abc3[cd]xyz\"))    # Should return \"abccdcdcdxyz\""
+    }
+  }
+}

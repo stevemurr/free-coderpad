@@ -1,0 +1,19 @@
+{
+  "id": 25,
+  "title": "Lowest Common Ancestor of a Binary Tree III",
+  "difficulty": "Medium",
+  "company": [
+    "Meta"
+  ],
+  "tags": [
+    "Tree",
+    "Hash Table",
+    "Binary Tree"
+  ],
+  "description": "Given two nodes of a binary tree `p` and `q`, return their **lowest common ancestor (LCA)**.\n\nEach node has a reference to its **parent node**. The definition for Node is below:\n\n```\nclass Node {\n    public int val;\n    public Node left;\n    public Node right;\n    public Node parent;\n}\n```\n\nAccording to the definition of LCA on Wikipedia: \"The **lowest common ancestor** of two nodes `p` and `q` in a tree `T` is the lowest node that has both `p` and `q` as descendants (where we allow a node to be a descendant of itself).\"\n\n### Example 1\n\n**Input:** `root = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]`, `p = 5`, `q = 1`  \n**Output:** `3`  \n**Explanation:** The LCA of nodes `5` and `1` is `3`.\n\n### Example 2\n\n**Input:** `root = [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]`, `p = 5`, `q = 4`  \n**Output:** `5`  \n**Explanation:** The LCA of nodes `5` and `4` is `5` since a node can be a descendant of itself according to the LCA definition.\n\n### Example 3\n\n**Input:** `root = [1, 2]`, `p = 1`, `q = 2`  \n**Output:** `1`  \n**Explanation:** The LCA of nodes `1` and `2` is `1`.",
+  "languages": {
+    "python": {
+      "starterCode": "# Definition for a Node.\nclass Node:\n    def __init__(self, val):\n        self.val = val\n        self.left = None\n        self.right = None\n        self.parent = None\n\ndef lowestCommonAncestor(p, q):\n    \"\"\"\n    :type p: Node\n    :type q: Node\n    :rtype: Node\n    \"\"\"\n    # Your code here\n\n\n# Helper function to create a tree from a list with parent pointers\ndef create_tree_with_parent(values):\n    if not values:\n        return None\n\n    # Create all nodes first\n    nodes = [Node(val) if val is not None else None for val in values]\n\n    # Connect the nodes\n    for i in range(len(nodes)):\n        if nodes[i] is None:\n            continue\n\n        # Left child\n        left_idx = 2 * i + 1\n        if left_idx < len(nodes) and nodes[left_idx] is not None:\n            nodes[i].left = nodes[left_idx]\n            nodes[left_idx].parent = nodes[i]\n\n        # Right child\n        right_idx = 2 * i + 2\n        if right_idx < len(nodes) and nodes[right_idx] is not None:\n            nodes[i].right = nodes[right_idx]\n            nodes[right_idx].parent = nodes[i]\n\n    return nodes[0] if nodes else None\n\n# Helper function to find a node with a specific value\ndef find_node(root, val):\n    if not root:\n        return None\n    if root.val == val:\n        return root\n\n    left = find_node(root.left, val)\n    if left:\n        return left\n\n    return find_node(root.right, val)\n\n# Test cases\ntree1 = create_tree_with_parent([3,5,1,6,2,0,8,None,None,7,4])\np1 = find_node(tree1, 5)\nq1 = find_node(tree1, 1)\nresult1 = lowestCommonAncestor(p1, q1)\nprint(result1.val if result1 else None)  # Should return 3\n\np2 = find_node(tree1, 5)\nq2 = find_node(tree1, 4)\nresult2 = lowestCommonAncestor(p2, q2)\nprint(result2.val if result2 else None)  # Should return 5\n\ntree2 = create_tree_with_parent([1,2])\np3 = find_node(tree2, 1)\nq3 = find_node(tree2, 2)\nresult3 = lowestCommonAncestor(p3, q3)\nprint(result3.val if result3 else None)  # Should return 1"
+    }
+  }
+}

@@ -2,6 +2,10 @@
     position: relative;
     width: 100%;
     transition: all 0.3s ease;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .editor-container {
@@ -9,6 +13,8 @@
     box-shadow: 0 4px 20px var(--light-shadow);
     border-radius: 0 0 8px 8px !important;
     overflow: hidden;
+    flex: 1;
+    min-height: 0;
 }
 
 .dark-mode .editor-container {

@@ -1,0 +1,18 @@
+{
+  "id": 29,
+  "title": "Valid Palindrome",
+  "difficulty": "Easy",
+  "company": [
+    "Microsoft"
+  ],
+  "tags": [
+    "Two Pointers",
+    "String"
+  ],
+  "description": "A phrase is a **palindrome** if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. **Alphanumeric characters** include letters and numbers.\n\nGiven a string `s`, return `true` if it is a palindrome, or `false` otherwise.\n\n### Example 1\n\n**Input:** `s = \"A man, a plan, a canal: Panama\"`  \n**Output:** `true`  \n**Explanation:** `\"amanaplanacanalpanama\"` is a palindrome.\n\n### Example 2\n\n**Input:** `s = \"race a car\"`  \n**Output:** `false`  \n**Explanation:** `\"raceacar\"` is not a palindrome.\n\n### Example 3\n\n**Input:** `s = \" \"`  \n**Output:** `true`  \n**Explanation:** `s` is an empty string `\"\"` after removing non-alphanumeric characters. Since an empty string reads the same forward and backward, it is a palindrome.",
+  "languages": {
+    "python": {
+      "starterCode": "def is_palindrome(s):\n    \"\"\"\n    :type s: str\n    :rtype: bool\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(is_palindrome(\"A man, a plan, a canal: Panama\"))  # Should return True\nprint(is_palindrome(\"race a car\"))                      # Should return False\nprint(is_palindrome(\" \"))                               # Should return True\nprint(is_palindrome(\"0P\"))                              # Should return False"
+    }
+  }
+}

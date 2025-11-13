@@ -1,28 +1,146 @@
 .timer-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1000;
+}
+
+/* Timer accordion wrapper */
+.timer-accordion {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+/* Main toggle button - Gmail-style circular button */
+.timer-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    border: none;
+    border-radius: 28px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+    transition: all 0.3s ease;
+    font-size: 24px;
+}
+
+.timer-toggle-btn:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 16px rgba(0, 123, 255, 0.5);
+    transform: translateY(-2px);
+}
+
+.timer-toggle-btn:active {
+    transform: translateY(0);
+}
+
+.dark-mode .timer-toggle-btn {
+    background-color: #0d6efd;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+}
+
+.dark-mode .timer-toggle-btn:hover {
+    background-color: #0b5ed7;
+    box-shadow: 0 6px 16px rgba(13, 110, 253, 0.5);
+}
+
+.timer-icon {
+    line-height: 1;
+}
+
+.timer-label {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Timer presets panel */
+.timer-presets {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 16px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.2s ease-out;
 }
 
-.timer-controls {
+.dark-mode .timer-presets {
+    background-color: #1f2937;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timer-preset-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.timer-preset-btn:hover {
+    background-color: #007bff;
+    color: white;
+    transform: translateX(-4px);
+}
+
+.dark-mode .timer-preset-btn {
+    background-color: #374151;
+    color: #e5e7eb;
+}
+
+.dark-mode .timer-preset-btn:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* Active timer display */
+.timer-active {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background-color: white;
+    border-radius: 28px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .timer-active {
+    background-color: #1f2937;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .timer-display {
-    font-family: monospace;
+    font-family: "Fira Code", "JetBrains Mono", "SF Mono", monospace;
     font-size: 16px;
     font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 4px;
-    background-color: #f3f4f6;
     color: #1f2937;
-    display: inline-block;
 }
 
 .dark-mode .timer-display {
-    background-color: #374151;
     color: #e5e7eb;
 }
 
@@ -35,6 +153,11 @@
     color: #f87171;
 }
 
+.timer-stop-btn {
+    font-size: 12px;
+    padding: 6px 12px;
+}
+
 @keyframes pulse {
     0%,
     100% {
@@ -42,5 +165,22 @@
     }
     50% {
         opacity: 0.6;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .timer-container {
+        bottom: 16px;
+        right: 16px;
+    }
+
+    .timer-toggle-btn {
+        padding: 10px;
+        font-size: 20px;
+    }
+
+    .timer-label {
+        font-size: 12px;
     }
 }

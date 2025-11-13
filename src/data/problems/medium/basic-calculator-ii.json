@@ -1,0 +1,19 @@
+{
+  "id": 27,
+  "title": "Basic Calculator II",
+  "difficulty": "Medium",
+  "company": [
+    ""
+  ],
+  "tags": [
+    "String",
+    "Stack",
+    "Math"
+  ],
+  "description": "Given a string `s` which represents an expression, evaluate this expression and return its value.\n\nThe **integer division** should truncate toward zero.\n\nYou may assume that the given expression is always valid. All intermediate results will be in the range of `[-2^31, 2^31 - 1]`.\n\n**Note:** You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as `eval()`.\n\n### Example 1\n\n**Input:** `s = \"3+2*2\"`  \n**Output:** `7`\n\n### Example 2\n\n**Input:** `s = \" 3/2 \"`  \n**Output:** `1`\n\n### Example 3\n\n**Input:** `s = \" 3+5 / 2 \"`  \n**Output:** `5`",
+  "languages": {
+    "python": {
+      "starterCode": "def calculate(s):\n    \"\"\"\n    :type s: str\n    :rtype: int\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(calculate(\"3+2*2\"))       # Should return 7\nprint(calculate(\" 3/2 \"))       # Should return 1\nprint(calculate(\" 3+5 / 2 \"))   # Should return 5\nprint(calculate(\"14-3/2\"))      # Should return 13"
+    }
+  }
+}

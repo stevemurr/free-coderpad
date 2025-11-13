@@ -1,7 +1,9 @@
-.problem-description-content {
+.problem-description-container {
     padding: 16px;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    overflow: hidden;
 }
 
 .problem-description-empty {
@@ -18,50 +20,225 @@
     color: #9ca3af;
 }
 
-.problem-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
+/* Modal header */
+.problem-modal-header {
+    flex-shrink: 0;
+    margin-bottom: 1rem;
 }
 
-.problem-header h3 {
+.problem-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.problem-title-row h3 {
     margin: 0;
     font-size: 1.25rem;
     font-weight: 700;
 }
 
-.problem-body {
-    /* Allow natural content flow without forcing scrollbars */
-    overflow-y: auto; /* This will only add scrollbars when needed */
-    /* Remove fixed heights and use content-based sizing */
-    flex: 1; /* Take available space */
-    margin-bottom: 16px;
+/* Modal body with markdown */
+.problem-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
 }
 
-.problem-body pre {
-    white-space: pre-wrap;
-    word-break: break-word;
-    font-family: "Fira Code", monospace;
-    font-size: 0.9rem;
+/* Markdown styling - matches SelectedProblemPanel */
+.problem-modal-body h1,
+.problem-modal-body h2,
+.problem-modal-body h3,
+.problem-modal-body h4,
+.problem-modal-body h5,
+.problem-modal-body h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.problem-modal-body h1:first-child,
+.problem-modal-body h2:first-child,
+.problem-modal-body h3:first-child {
+    margin-top: 0;
+}
+
+.problem-modal-body h1 {
+    font-size: 1.75rem;
+    border-bottom: 2px solid var(--light-border);
+    padding-bottom: 0.5rem;
+}
+
+.dark-mode .problem-modal-body h1 {
+    border-bottom-color: var(--dark-border);
+}
+
+.problem-modal-body h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--light-border);
+    padding-bottom: 0.375rem;
+}
+
+.dark-mode .problem-modal-body h2 {
+    border-bottom-color: var(--dark-border);
+}
+
+.problem-modal-body h3 {
+    font-size: 1.25rem;
+}
+
+.problem-modal-body h4 {
+    font-size: 1.125rem;
+}
+
+.problem-modal-body p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.problem-modal-body ul,
+.problem-modal-body ol {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.problem-modal-body li {
+    margin-bottom: 0.375rem;
+    line-height: 1.6;
+}
+
+.problem-modal-body li>p {
+    margin-bottom: 0.375rem;
+}
+
+.problem-modal-body code {
+    font-family: "Fira Code", "JetBrains Mono", "SF Mono", monospace;
+    font-size: 0.875em;
+    padding: 0.2em 0.4em;
+    background-color: var(--light-sidebar-bg);
+    border-radius: 4px;
+    border: 1px solid var(--light-border);
+}
+
+.dark-mode .problem-modal-body code {
+    background-color: var(--dark-sidebar-bg);
+    border-color: var(--dark-border);
+}
+
+.problem-modal-body pre {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    overflow-x: auto;
+}
+
+.problem-modal-body pre code {
+    display: block;
+    padding: 1rem;
+    font-size: 0.875rem;
     line-height: 1.5;
     background-color: var(--light-sidebar-bg);
-    padding: 16px;
+    border: 1px solid var(--light-border);
     border-radius: 6px;
-    margin: 0;
+    overflow-x: auto;
 }
 
-.dark-mode .problem-body pre {
+.dark-mode .problem-modal-body pre code {
     background-color: var(--dark-sidebar-bg);
+    border-color: var(--dark-border);
+}
+
+.problem-modal-body blockquote {
+    margin: 0 0 1rem 0;
+    padding-left: 1rem;
+    border-left: 4px solid #007bff;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.dark-mode .problem-modal-body blockquote {
+    color: #adb5bd;
+}
+
+.problem-modal-body table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+.problem-modal-body table th,
+.problem-modal-body table td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--light-border);
+}
+
+.dark-mode .problem-modal-body table th,
+.dark-mode .problem-modal-body table td {
+    border-color: var(--dark-border);
+}
+
+.problem-modal-body table th {
+    font-weight: 600;
+    background-color: var(--light-sidebar-bg);
+}
+
+.dark-mode .problem-modal-body table th {
+    background-color: var(--dark-sidebar-bg);
+}
+
+.problem-modal-body a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.problem-modal-body a:hover {
+    text-decoration: underline;
+}
+
+.dark-mode .problem-modal-body a {
+    color: #0d6efd;
+}
+
+.problem-modal-body hr {
+    border: none;
+    border-top: 1px solid var(--light-border);
+    margin: 1.5rem 0;
+}
+
+.dark-mode .problem-modal-body hr {
+    border-top-color: var(--dark-border);
+}
+
+.problem-modal-body strong {
+    font-weight: 600;
+}
+
+.problem-modal-body em {
+    font-style: italic;
+}
+
+/* Modal footer */
+.problem-modal-footer {
+    flex-shrink: 0;
+    border-top: 1px solid var(--light-border);
+    padding: 1.5rem 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dark-mode .problem-modal-footer {
+    border-top-color: var(--dark-border);
 }
 
 .problem-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 16px;
-    /* Keep this at the bottom of the content flow, not pushed away */
-    flex-shrink: 0;
 }
 
 .problem-tag {
@@ -77,11 +254,8 @@
 }
 
 .problem-actions {
-    /* Set to flex-shrink: 0 to keep it at the bottom */
-    flex-shrink: 1;
     display: flex;
     justify-content: flex-end;
-    margin-top: auto; /* Push to bottom of container */
 }
 
 .problem-select-btn {

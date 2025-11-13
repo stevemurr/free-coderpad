@@ -1,0 +1,21 @@
+{
+  "id": 11,
+  "title": "Word Break",
+  "difficulty": "Medium",
+  "company": [
+    ""
+  ],
+  "tags": [
+    "Hash Table",
+    "String",
+    "Dynamic Programming",
+    "Trie",
+    "Memoization"
+  ],
+  "description": "Given a string `s` and a dictionary of strings `wordDict`, return `true` if `s` can be **segmented** into a space-separated sequence of one or more dictionary words.\n\nNote that the same word in the dictionary may be **reused** multiple times in the segmentation.\n\n### Example 1\n\n**Input:** `s = \"leetcode\"`, `wordDict = [\"leet\", \"code\"]`  \n**Output:** `true`  \n**Explanation:** Return `true` because `\"leetcode\"` can be segmented as `\"leet code\"`.\n\n### Example 2\n\n**Input:** `s = \"applepenapple\"`, `wordDict = [\"apple\", \"pen\"]`  \n**Output:** `true`  \n**Explanation:** Return `true` because `\"applepenapple\"` can be segmented as `\"apple pen apple\"`. Note that you are allowed to reuse a dictionary word.\n\n### Example 3\n\n**Input:** `s = \"catsandog\"`, `wordDict = [\"cats\", \"dog\", \"sand\", \"and\", \"cat\"]`  \n**Output:** `false`",
+  "languages": {
+    "python": {
+      "starterCode": "def word_break(s, word_dict):\n    \"\"\"\n    :type s: str\n    :type word_dict: List[str]\n    :rtype: bool\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(word_break(\"leetcode\", [\"leet\", \"code\"]))                        # Should return True\nprint(word_break(\"applepenapple\", [\"apple\", \"pen\"]))                   # Should return True\nprint(word_break(\"catsandog\", [\"cats\", \"dog\", \"sand\", \"and\", \"cat\"]))  # Should return False\nprint(word_break(\"abcd\", [\"a\", \"abc\", \"b\", \"cd\"]))                     # Should return True"
+    }
+  }
+}

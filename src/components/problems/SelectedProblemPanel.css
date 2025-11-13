@@ -1,11 +1,15 @@
 .selected-problem-panel {
     background-color: var(--light-input-bg);
     border-radius: 8px;
-    padding: 1.25rem;
-    margin-bottom: 1.25rem;
+    padding: 0;
     box-shadow: 0 4px 10px var(--light-shadow);
     border: 1px solid var(--light-border);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .dark-mode .selected-problem-panel {
@@ -14,38 +18,233 @@
     border: 1px solid var(--dark-border);
 }
 
-.selected-problem-panel .problem-header {
+/* Panel header - sticky at top */
+.selected-problem-panel .problem-panel-header {
+    position: sticky;
+    top: 0;
+    background-color: var(--light-input-bg);
+    border-bottom: 1px solid var(--light-border);
+    padding: 1rem 1.25rem;
+    z-index: 10;
+    border-radius: 8px 8px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    gap: 1rem;
 }
 
-.selected-problem-panel .problem-header h3 {
+.dark-mode .selected-problem-panel .problem-panel-header {
+    background-color: var(--dark-input-bg);
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.selected-problem-panel .problem-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.selected-problem-panel .problem-title-row h3 {
     margin: 0;
     font-size: 1.25rem;
     font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.selected-problem-panel .browse-problems-header-btn {
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+}
+
+.selected-problem-panel .problem-description-content {
+    padding: 1.25rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Markdown styling */
+.selected-problem-panel .problem-description-content h1,
+.selected-problem-panel .problem-description-content h2,
+.selected-problem-panel .problem-description-content h3,
+.selected-problem-panel .problem-description-content h4,
+.selected-problem-panel .problem-description-content h5,
+.selected-problem-panel .problem-description-content h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.selected-problem-panel .problem-description-content h1:first-child,
+.selected-problem-panel .problem-description-content h2:first-child,
+.selected-problem-panel .problem-description-content h3:first-child {
+    margin-top: 0;
+}
+
+.selected-problem-panel .problem-description-content h1 {
+    font-size: 1.75rem;
+    border-bottom: 2px solid var(--light-border);
+    padding-bottom: 0.5rem;
+}
+
+.dark-mode .selected-problem-panel .problem-description-content h1 {
+    border-bottom-color: var(--dark-border);
+}
+
+.selected-problem-panel .problem-description-content h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--light-border);
+    padding-bottom: 0.375rem;
+}
+
+.dark-mode .selected-problem-panel .problem-description-content h2 {
+    border-bottom-color: var(--dark-border);
+}
+
+.selected-problem-panel .problem-description-content h3 {
+    font-size: 1.25rem;
+}
+
+.selected-problem-panel .problem-description-content h4 {
+    font-size: 1.125rem;
+}
+
+.selected-problem-panel .problem-description-content p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.selected-problem-panel .problem-description-content ul,
+.selected-problem-panel .problem-description-content ol {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+.selected-problem-panel .problem-description-content li {
+    margin-bottom: 0.375rem;
+    line-height: 1.6;
+}
+
+.selected-problem-panel .problem-description-content li > p {
+    margin-bottom: 0.375rem;
+}
+
+.selected-problem-panel .problem-description-content code {
+    font-family: "Fira Code", "JetBrains Mono", "SF Mono", monospace;
+    font-size: 0.875em;
+    padding: 0.2em 0.4em;
+    background-color: var(--light-sidebar-bg);
+    border-radius: 4px;
+    border: 1px solid var(--light-border);
+}
+
+.dark-mode .selected-problem-panel .problem-description-content code {
+    background-color: var(--dark-sidebar-bg);
+    border-color: var(--dark-border);
 }
 
 .selected-problem-panel .problem-description-content pre {
-    white-space: pre-wrap;
-    word-break: break-word;
-    font-family: "Fira Code", monospace;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    background-color: var(--light-sidebar-bg);
-    padding: 0.75rem;
-    border-radius: 6px;
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    overflow-x: auto;
 }
 
-.dark-mode .selected-problem-panel .problem-description-content pre {
+.selected-problem-panel .problem-description-content pre code {
+    display: block;
+    padding: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    background-color: var(--light-sidebar-bg);
+    border: 1px solid var(--light-border);
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.dark-mode .selected-problem-panel .problem-description-content pre code {
+    background-color: var(--dark-sidebar-bg);
+    border-color: var(--dark-border);
+}
+
+.selected-problem-panel .problem-description-content blockquote {
+    margin: 0 0 1rem 0;
+    padding-left: 1rem;
+    border-left: 4px solid #007bff;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.dark-mode .selected-problem-panel .problem-description-content blockquote {
+    color: #adb5bd;
+}
+
+.selected-problem-panel .problem-description-content table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+.selected-problem-panel .problem-description-content table th,
+.selected-problem-panel .problem-description-content table td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--light-border);
+}
+
+.dark-mode .selected-problem-panel .problem-description-content table th,
+.dark-mode .selected-problem-panel .problem-description-content table td {
+    border-color: var(--dark-border);
+}
+
+.selected-problem-panel .problem-description-content table th {
+    font-weight: 600;
+    background-color: var(--light-sidebar-bg);
+}
+
+.dark-mode .selected-problem-panel .problem-description-content table th {
     background-color: var(--dark-sidebar-bg);
 }
 
+.selected-problem-panel .problem-description-content a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.selected-problem-panel .problem-description-content a:hover {
+    text-decoration: underline;
+}
+
+.dark-mode .selected-problem-panel .problem-description-content a {
+    color: #0d6efd;
+}
+
+.selected-problem-panel .problem-description-content hr {
+    border: none;
+    border-top: 1px solid var(--light-border);
+    margin: 1.5rem 0;
+}
+
+.dark-mode .selected-problem-panel .problem-description-content hr {
+    border-top-color: var(--dark-border);
+}
+
+.selected-problem-panel .problem-description-content strong {
+    font-weight: 600;
+}
+
+.selected-problem-panel .problem-description-content em {
+    font-style: italic;
+}
+
 .selected-problem-panel .problem-tags {
-    margin-top: 1rem;
+    padding: 0.75rem 1.25rem 1rem;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    flex-shrink: 0;
 }

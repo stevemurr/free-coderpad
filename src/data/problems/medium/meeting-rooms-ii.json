@@ -1,0 +1,18 @@
+{
+  "id": 14,
+  "title": "Meeting Rooms II",
+  "difficulty": "Medium",
+  "company": [],
+  "tags": [
+    "Array",
+    "Sorting",
+    "Heap (Priority Queue)",
+    "Greedy"
+  ],
+  "description": "Given an array of meeting time intervals `intervals` where `intervals[i] = [starti, endi]`, return the **minimum number** of conference rooms required.\n\n### Example 1\n\n**Input:** `intervals = [[0, 30], [5, 10], [15, 20]]`  \n**Output:** `2`\n\n### Example 2\n\n**Input:** `intervals = [[7, 10], [2, 4]]`  \n**Output:** `1`",
+  "languages": {
+    "python": {
+      "starterCode": "def min_meeting_rooms(intervals):\n    \"\"\"\n    :type intervals: List[List[int]]\n    :rtype: int\n    \"\"\"\n    # Your code here\n\n\n# Test cases\nprint(min_meeting_rooms([[0, 30], [5, 10], [15, 20]]))  # Should return 2\nprint(min_meeting_rooms([[7, 10], [2, 4]]))  # Should return 1\nprint(min_meeting_rooms([[1, 5], [8, 9], [8, 10]]))  # Should return 2\nprint(min_meeting_rooms([[1, 5], [5, 10]]))  # Should return 1"
+    }
+  }
+}

@@ -28,7 +28,7 @@
 
 .problem-details {
     flex: 1;
-    overflow-y: auto; /* This will handle scrolling for the entire description side */
+    overflow: hidden;
     background-color: var(--light-input-bg);
     height: 100%;
 }

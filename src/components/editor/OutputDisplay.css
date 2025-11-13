@@ -1,11 +1,15 @@
 .output-section {
-    width: 100%;
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .output-title {
     font-size: 1.2rem;
     font-weight: 600;
-    margin-top: 1.5rem;
+    margin-top: 0;
     margin-bottom: 0.75rem;
 }
 
@@ -17,8 +21,7 @@
     font-family: "Fira Code", "JetBrains Mono", "SF Mono", monospace;
     font-size: 14px;
     line-height: 1.6;
-    min-height: 150px;
-    max-height: 350px;
+    flex: 1;
     white-space: pre;
     padding: 16px;
     tab-size: 4;
@@ -73,9 +76,13 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1023px) {
+    .output-section {
+        flex: none;
+        min-height: 200px;
+    }
+
     .output-container {
-        height: calc(100% - 2.5rem);
-        max-height: none;
+        max-height: 350px;
     }
 }

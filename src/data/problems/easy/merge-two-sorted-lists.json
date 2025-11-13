@@ -1,0 +1,15 @@
+{
+  "id": 19,
+  "title": "Merge Two Sorted Lists",
+  "difficulty": "Easy",
+  "company": [
+    ""
+  ],
+  "tags": [],
+  "description": "You are given the heads of two **sorted linked lists** `list1` and `list2`.\n\nMerge the two lists into one **sorted list**. The list should be made by splicing together the nodes of the first two lists.\n\nReturn the head of the merged linked list.\n\n### Example 1\n\n**Input:** `list1 = [1, 2, 4]`, `list2 = [1, 3, 4]`  \n**Output:** `[1, 1, 2, 3, 4, 4]`\n\n### Example 2\n\n**Input:** `list1 = []`, `list2 = []`  \n**Output:** `[]`\n\n### Example 3\n\n**Input:** `list1 = []`, `list2 = [0]`  \n**Output:** `[0]`",
+  "languages": {
+    "python": {
+      "starterCode": "# Definition for singly-linked list node\nclass ListNode:\n    def __init__(self, val=0, next=None):\n        self.val = val\n        self.next = next\n\ndef merge_two_lists(list1, list2):\n    # Your code here\n    pass\n\n# Helper function to create a linked list from a list\ndef create_linked_list(lst):\n    dummy = ListNode(0)\n    curr = dummy\n    for val in lst:\n        curr.next = ListNode(val)\n        curr = curr.next\n    return dummy.next\n\n# Helper function to convert linked list to list for printing\ndef linked_list_to_list(head):\n    result = []\n    while head:\n        result.append(head.val)\n        head = head.next\n    return result\n\n# Test cases\nlist1 = create_linked_list([1, 2, 4])\nlist2 = create_linked_list([1, 3, 4])\nmerged = merge_two_lists(list1, list2)\nprint(linked_list_to_list(merged))  # Should print [1, 1, 2, 3, 4, 4]\n\nlist3 = create_linked_list([])\nlist4 = create_linked_list([0])\nmerged2 = merge_two_lists(list3, list4)\nprint(linked_list_to_list(merged2))  # Should print [0]"
+    }
+  }
+}

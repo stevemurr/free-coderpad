@@ -1,0 +1,16 @@
+{
+  "python": {
+    "name": "Python 3",
+    "dockerImage": "python:3.11-slim",
+    "fileExtension": ".py",
+    "executor": "python3",
+    "enabled": true,
+    "poolSize": 3,
+    "maxExecutions": 100,
+    "timeout": 5000,
+    "resourceLimits": {
+      "memory": "256m",
+      "cpus": "0.5"
+    }
+  }
+}

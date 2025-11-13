@@ -1,0 +1,21 @@
+{
+  "id": 23,
+  "title": "Binary Tree Vertical Order Traversal",
+  "difficulty": "Medium",
+  "company": [
+    ""
+  ],
+  "tags": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Given the `root` of a binary tree, return the **vertical order traversal** of its nodes' values (i.e., from top to bottom, column by column).\n\nIf two nodes are in the same row and column, the order should be from **left to right**.\n\n### Example 1\n\n**Input:** `root = [3, 9, 20, null, null, 15, 7]`  \n**Output:** `[[9], [3, 15], [20], [7]]`  \n**Explanation:**\n- Column -1: Only node `9` is in this column.\n- Column 0: Nodes `3` and `15` are in this column in that order from top to bottom.\n- Column 1: Only node `20` is in this column.\n- Column 2: Only node `7` is in this column.\n\n### Example 2\n\n**Input:** `root = [3, 9, 8, 4, 0, 1, 7]`  \n**Output:** `[[4], [9], [3, 0, 1], [8], [7]]`  \n**Explanation:**\n- Column -2: Only node `4` is in this column.\n- Column -1: Only node `9` is in this column.\n- Column 0: Nodes `3`, `0`, and `1` are in this column.\n- Column 1: Only node `8` is in this column.\n- Column 2: Only node `7` is in this column.\n\n### Example 3\n\n**Input:** `root = [3, 9, 8, 4, 0, 1, 7, null, null, null, 2, 5]`  \n**Output:** `[[4], [9, 5], [3, 0, 1], [8, 2], [7]]`  \n**Explanation:**\n- Column -2: Only node `4` is in this column.\n- Column -1: Nodes `9` and `5` are in this column in that order from top to bottom.\n- Column 0: Nodes `3`, `0`, and `1` are in this column.\n- Column 1: Nodes `8` and `2` are in this column in that order from top to bottom.\n- Column 2: Only node `7` is in this column.",
+  "languages": {
+    "python": {
+      "starterCode": "# Definition for a binary tree node.\nclass TreeNode:\n    def __init__(self, val=0, left=None, right=None):\n        self.val = val\n        self.left = left\n        self.right = right\n\ndef vertical_order(root):\n    \"\"\"\n    :type root: TreeNode\n    :rtype: List[List[int]]\n    \"\"\"\n    # Your code here\n\n\n# Helper function to create a tree from a list\ndef create_tree(values):\n    if not values:\n        return None\n\n    root = TreeNode(values[0])\n    queue = [root]\n    i = 1\n    while queue and i < len(values):\n        node = queue.pop(0)\n\n        # Left child\n        if i < len(values) and values[i] is not None:\n            node.left = TreeNode(values[i])\n            queue.append(node.left)\n        i += 1\n\n        # Right child\n        if i < len(values) and values[i] is not None:\n            node.right = TreeNode(values[i])\n            queue.append(node.right)\n        i += 1\n\n    return root\n\n# Test cases\nprint(vertical_order(create_tree([3, 9, 20, None, None, 15, 7])))  # Should return [[9],[3,15],[20],[7]]\nprint(vertical_order(create_tree([3, 9, 8, 4, 0, 1, 7])))          # Should return [[4],[9],[3,0,1],[8],[7]]\nprint(vertical_order(create_tree([3, 9, 8, 4, 0, 1, 7, None, None, None, 2, 5])))  # Should return [[4],[9,5],[3,0,1],[8,2],[7]]\nprint(vertical_order(create_tree([])))                             # Should return []"
+    }
+  }
+}
