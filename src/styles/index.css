@@ -35,9 +35,13 @@
 }
 
 /* Global styles */
-body {
+html, body {
     margin: 0;
     padding: 0;
+    height: 100vh;
+}
+
+body {
     transition:
         background-color 0.3s ease,
         color 0.3s ease;
@@ -52,6 +56,12 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Light mode styles */
