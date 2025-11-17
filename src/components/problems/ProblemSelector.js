@@ -10,14 +10,15 @@ const ProblemSelector = ({ onSelectProblem }) => {
   const [selectedProblem, setSelectedProblem] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("all");
+  const [companyFilter, setCompanyFilter] = useState("all");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Filter problems based on search term and difficulty
+    // Filter problems based on search term, difficulty, and company
     const loadProblems = async () => {
       setLoading(true);
       try {
-        const filteredProblems = await filterProblems(searchTerm, filter);
+        const filteredProblems = await filterProblems(searchTerm, filter, null, companyFilter);
         setProblems(filteredProblems);
       } catch (error) {
         console.error('Failed to load problems:', error);
@@ -28,7 +29,7 @@ const ProblemSelector = ({ onSelectProblem }) => {
     };
 
     loadProblems();
-  }, [searchTerm, filter]);
+  }, [searchTerm, filter, companyFilter]);
 
   const handleProblemClick = (problem) => {
     setSelectedProblem(problem);
@@ -47,6 +48,8 @@ const ProblemSelector = ({ onSelectProblem }) => {
             setSearchTerm={setSearchTerm}
             filter={filter}
             setFilter={setFilter}
+            companyFilter={companyFilter}
+            setCompanyFilter={setCompanyFilter}
           />
         </div>
         {loading ? (

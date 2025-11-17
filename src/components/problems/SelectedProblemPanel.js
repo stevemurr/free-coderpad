@@ -27,14 +27,30 @@ const SelectedProblemPanel = ({ problem, onBrowseProblems }) => {
           {problem.description}
         </ReactMarkdown>
       </div>
-      <div className="problem-tags">
-        {problem.tags &&
-          problem.tags.map((tag, index) => (
-            <span key={index} className="problem-tag">
-              {tag}
-            </span>
-          ))}
-      </div>
+      {problem.company && problem.company.length > 0 && problem.company[0] !== "" && (
+        <div className="problem-companies-section">
+          <div className="section-label">Companies:</div>
+          <div className="problem-companies-list">
+            {problem.company.map((comp, index) => (
+              <span key={index} className={`problem-company company-${comp.toLowerCase()}`}>
+                {comp}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      {problem.tags && problem.tags.length > 0 && (
+        <div className="problem-tags-section">
+          <div className="section-label">Topics:</div>
+          <div className="problem-tags">
+            {problem.tags.map((tag, index) => (
+              <span key={index} className="problem-tag">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

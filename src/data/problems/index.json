@@ -7,7 +7,7 @@
       "file": "easy/two-sum.json",
       "tags": [],
       "company": [
-        ""
+        "Apple"
       ]
     },
     {
@@ -37,7 +37,7 @@
       "file": "easy/merge-two-sorted-lists.json",
       "tags": [],
       "company": [
-        ""
+        "Apple"
       ]
     },
     {
@@ -74,7 +74,7 @@
         "Sorting"
       ],
       "company": [
-        ""
+        "Apple"
       ]
     },
     {
@@ -169,7 +169,7 @@
         "Sorting"
       ],
       "company": [
-        ""
+        "Apple"
       ]
     },
     {
@@ -214,6 +214,7 @@
         "Quickselect"
       ],
       "company": [
+        "Apple",
         "Meta"
       ]
     },

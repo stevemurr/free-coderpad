@@ -25,9 +25,30 @@
     font-size: 0.9rem;
     width: calc(100% - 1.5rem);
     word-break: break-word;
+}
+
+.problem-item-content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.problem-title-text {
+    font-size: 0.9rem;
+}
+
+.problem-badges {
+    display: flex;
     align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.problem-companies {
+    display: flex;
+    gap: 0.375rem;
+    flex-wrap: wrap;
 }
 
 /* Make sure the last item has no margin to avoid extra scrolling space */
@@ -105,4 +126,43 @@
 
 .dark-mode .no-problems-found {
     color: #9ca3af;
+}
+
+.problem-company {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.65rem;
+    border-radius: 4px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.company-apple {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #000000;
+}
+
+.company-meta {
+    background-color: rgba(6, 104, 225, 0.15);
+    color: #0668E1;
+}
+
+.company-microsoft {
+    background-color: rgba(0, 164, 239, 0.15);
+    color: #00A4EF;
+}
+
+.dark-mode .company-apple {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.dark-mode .company-meta {
+    background-color: rgba(6, 104, 225, 0.3);
+    color: #5b9ef5;
+}
+
+.dark-mode .company-microsoft {
+    background-color: rgba(0, 164, 239, 0.3);
+    color: #4fc3f7;
 }

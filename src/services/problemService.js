@@ -56,9 +56,9 @@ export const getProblemById = async (id) => {
 };
 
 /**
- * Filter problems by search term and difficulty
+ * Filter problems by search term, difficulty, language, and company
  */
-export const filterProblems = async (searchTerm, difficulty, language = null) => {
+export const filterProblems = async (searchTerm, difficulty, language = null, company = null) => {
   // First filter by index metadata (faster)
   let filteredIndex = problemIndex.problems;
 
@@ -67,6 +67,13 @@ export const filterProblems = async (searchTerm, difficulty, language = null) =>
     filteredIndex = filteredIndex.filter(
       (p) => p.difficulty === difficulty
     );
+  }
+
+  // Filter by company
+  if (company && company !== "all") {
+    filteredIndex = filteredIndex.filter((p) => {
+      return p.company && p.company.includes(company);
+    });
   }
 
   // Filter by search term using index data

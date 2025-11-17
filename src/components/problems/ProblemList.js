@@ -24,12 +24,25 @@ const ProblemList = ({ problems, selectedProblem, onSelectProblem }) => {
               className={`problem-item ${selectedProblem && selectedProblem.id === problem.id ? "active" : ""}`}
               onClick={() => onSelectProblem(problem)}
             >
-              {problem.title}
-              <span
-                className={`problem-difficulty difficulty-${problem.difficulty.toLowerCase()}`}
-              >
-                {problem.difficulty}
-              </span>
+              <div className="problem-item-content">
+                <span className="problem-title-text">{problem.title}</span>
+                <div className="problem-badges">
+                  {problem.company && problem.company.length > 0 && problem.company[0] !== "" && (
+                    <div className="problem-companies">
+                      {problem.company.map((comp, idx) => (
+                        <span key={idx} className={`problem-company company-${comp.toLowerCase()}`}>
+                          {comp}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <span
+                    className={`problem-difficulty difficulty-${problem.difficulty.toLowerCase()}`}
+                  >
+                    {problem.difficulty}
+                  </span>
+                </div>
+              </div>
             </li>
           ))}
         </ul>

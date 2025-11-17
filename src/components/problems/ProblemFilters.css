@@ -87,3 +87,37 @@
 .dark-mode .filter-btn:hover:not(.active) {
     background-color: var(--dark-sidebar-item-hover);
 }
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dark-mode .filter-label {
+    color: #9ca3af;
+}
+
+/* Company-specific filter button colors */
+.filter-btn.company-apple.active {
+    background-color: #000000;
+    color: white;
+}
+
+.filter-btn.company-meta.active {
+    background-color: #0668E1;
+    color: white;
+}
+
+.filter-btn.company-microsoft.active {
+    background-color: #00A4EF;
+    color: white;
+}
